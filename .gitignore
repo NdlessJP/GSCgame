@@ -18,3 +18,10 @@ Thumbs.db
 .local/
 *.log
 *.tmp
+
+# SSH keys / credentials (the sandbox home dir lives inside the repo)
+.ssh/
+*.pem
+*.key
+id_rsa*
+id_ed25519*
