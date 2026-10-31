@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="AbilityDef" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_4u86w"]
+[ext_resource type="Resource" path="res://resources/statuses/status_bulwark.tres" id="2_3k6ue"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_q48jl"]
+
+[sub_resource type="Resource" id="Resource_ssb2o"]
+script = ExtResource("1_4u86w")
+effect_type = 3
+target_mode_override = 5
+chance = 1.0
+power = 100.0
+flat_amount = 0.0
+damage_kind = 0
+element_override = -1
+can_crit = true
+ignore_defense = false
+lifesteal_percent = 0.0
+heal_power = 0.0
+heal_flat = 0.0
+full_heal_on_broken = false
+shield_flat = 0.0
+shield_percent_of_max_hp = 0.0
+shield_duration = 8.0
+shield_absorb_ratio = 1.0
+arts_amount = 0.0
+break_amount = 0.0
+status = ExtResource("2_3k6ue")
+duration_override = -1.0
+
+[sub_resource type="Resource" id="Resource_xuqoy"]
+script = ExtResource("1_4u86w")
+effect_type = 2
+target_mode_override = 5
+chance = 1.0
+power = 100.0
+flat_amount = 0.0
+damage_kind = 0
+element_override = -1
+can_crit = true
+ignore_defense = false
+lifesteal_percent = 0.0
+heal_power = 0.0
+heal_flat = 0.0
+full_heal_on_broken = false
+shield_flat = 0.0
+shield_percent_of_max_hp = 0.18
+shield_duration = 8.0
+shield_absorb_ratio = 1.0
+arts_amount = 0.0
+break_amount = 0.0
+duration_override = 0.0
+
+[resource]
+script = ExtResource("3_q48jl")
+id = &"boss_bulwark"
+display_name = "Iron Bulwark"
+description = "Raises an iron guard."
+kind = 1
+cooldown = 14.0
+arts_cost = 0.0
+arts_generated = 0.0
+windup = 0.6
+target_mode = 5
+effects = Array[ExtResource("1_4u86w")]([SubResource("Resource_ssb2o"), SubResource("Resource_xuqoy")])
+color = Color(0.75, 0.75, 0.8, 1)
+show_projectile = false
+projectile_speed = 460.0
+impact_scale = 1.0

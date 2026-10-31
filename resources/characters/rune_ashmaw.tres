@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="CharacterDef" load_steps=10 format=3]
+
+[ext_resource type="Resource" path="res://resources/abilities/rune_arts.tres" id="1_08gen"]
+[ext_resource type="Resource" path="res://resources/abilities/rune_basic.tres" id="2_c01v2"]
+[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_ujw03"]
+[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_7wml4"]
+[ext_resource type="Resource" path="res://resources/abilities/rune_skill.tres" id="5_ysni4"]
+[ext_resource type="Resource" path="res://resources/abilities/rune_true.tres" id="6_towa4"]
+
+[sub_resource type="Resource" id="Resource_citu0"]
+script = ExtResource("3_ujw03")
+id = &"offence"
+display_name = "Offence"
+allowed_categories = Array[int]([0, 2])
+
+[sub_resource type="Resource" id="Resource_16gg3"]
+script = ExtResource("3_ujw03")
+id = &"guard"
+display_name = "Guard"
+allowed_categories = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_hui0g"]
+script = ExtResource("3_ujw03")
+id = &"aux"
+display_name = "Auxiliary"
+allowed_categories = Array[int]([0, 2])
+
+[resource]
+script = ExtResource("4_7wml4")
+basic_attack = ExtResource("2_c01v2")
+skill = ExtResource("5_ysni4")
+arts = ExtResource("1_08gen")
+true_arts = ExtResource("6_towa4")
+equipment_slots = Array[ExtResource("3_ujw03")]([SubResource("Resource_citu0"), SubResource("Resource_16gg3"), SubResource("Resource_hui0g")])
+lore = "Nobody remembers her real name. They only remember the sound a guard makes when it gives up."
+roster_order = 4
+id = &"rune_ashmaw"
+display_name = "Rune Ashmaw"
+element = 4
+role = "Saboteur"
+description = "A break specialist who wrecks enemy guards."
+base_max_hp = 205.0
+base_attack = 26.0
+base_defense = 12.0
+base_magic = 20.0
+base_magic_defense = 16.0
+hp_growth = 16.0
+attack_growth = 3.1
+defense_growth = 1.6
+magic_growth = 2.4
+magic_defense_growth = 1.9
+body_color = Color(0.45, 0.25, 0.6, 1)
+accent_color = Color(0.9, 0.4, 0.95, 1)
+body_size = Vector2(30, 72)
+body_shape = 4

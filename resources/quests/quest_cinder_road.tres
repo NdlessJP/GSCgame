@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/quest_def.gd" id="1_ysvcj"]
+[ext_resource type="Script" path="res://scripts/data/wave_def.gd" id="2_1ts6e"]
+
+[sub_resource type="Resource" id="Resource_fqhat"]
+script = ExtResource("2_1ts6e")
+label = "Wave 1"
+enemy_ids = Array[StringName]([&"cinder_wisp", &"cinder_wisp"])
+break_delay = 1.5
+
+[sub_resource type="Resource" id="Resource_wwslf"]
+script = ExtResource("2_1ts6e")
+label = "Wave 2"
+enemy_ids = Array[StringName]([&"cinder_wisp", &"cinder_wisp", &"stone_husk"])
+break_delay = 1.5
+
+[sub_resource type="Resource" id="Resource_33m7w"]
+script = ExtResource("2_1ts6e")
+label = "Wave 3"
+enemy_ids = Array[StringName]([&"stone_husk", &"stone_husk", &"stone_husk", &"cinder_wisp"])
+break_delay = 1.5
+
+[resource]
+script = ExtResource("1_ysvcj")
+id = &"quest_cinder_road"
+display_name = "Cinder Road"
+description = "Scorched trade roads outside the Ember Watch. Something is still burning out there."
+recommended_level = 1
+requires_quest = &""
+waves = Array[ExtResource("2_1ts6e")]([SubResource("Resource_fqhat"), SubResource("Resource_wwslf"), SubResource("Resource_33m7w")])
+reward_xp = 120
+reward_currency = 60
+reward_items = Array[StringName]([&"bulwark_plate"])

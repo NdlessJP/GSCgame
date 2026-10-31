@@ -1,0 +1,37 @@
+; Engine configuration file.
+; Ashen Vanguard - 2D party-based real-time RPG prototype
+; Godot 4.3+
+
+config_version=5
+
+[application]
+
+config/name="Ashen Vanguard"
+config/description="A 2D party-based real-time RPG prototype with break gauges, arts gauge and equipment actives."
+run/main_scene="res://scenes/main_menu/main_menu.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Game="*res://scripts/core/game.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/size/window_width_override=1280
+window/size/window_height_override=720
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/canvas_textures/default_texture_filter=1
+environment/defaults/default_clear_color=Color(0.055, 0.06, 0.086, 1)
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=false

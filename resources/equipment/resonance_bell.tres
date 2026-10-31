@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EquipmentDef" load_steps=3 format=3]
+
+[ext_resource type="Resource" path="res://resources/abilities/eq_resonant_chime.tres" id="1_wrdl4"]
+[ext_resource type="Script" path="res://scripts/data/equipment_def.gd" id="2_hbno0"]
+
+[resource]
+script = ExtResource("2_hbno0")
+id = &"resonance_bell"
+display_name = "Resonance Bell"
+description = "Rings only when someone needs focus."
+category = 2
+unique_item = true
+attack_percent = 0.0
+defense_percent = 0.0
+magic_percent = 0.0
+magic_defense_percent = 0.0
+attack_flat = 0.0
+defense_flat = 0.0
+max_hp_flat = 0.0
+arts_per_attack = 0.0
+active_ability = ExtResource("1_wrdl4")
+icon_color = Color(0.5, 0.85, 1, 1)

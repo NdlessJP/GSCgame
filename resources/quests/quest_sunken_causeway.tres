@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/quest_def.gd" id="1_kxfdt"]
+[ext_resource type="Script" path="res://scripts/data/wave_def.gd" id="2_ki3gt"]
+
+[sub_resource type="Resource" id="Resource_sqws6"]
+script = ExtResource("2_ki3gt")
+label = "Wave 1"
+enemy_ids = Array[StringName]([&"marsh_slime", &"marsh_slime"])
+break_delay = 1.5
+
+[sub_resource type="Resource" id="Resource_v1fke"]
+script = ExtResource("2_ki3gt")
+label = "Wave 2"
+enemy_ids = Array[StringName]([&"marsh_slime", &"marsh_slime", &"night_shade"])
+break_delay = 1.5
+
+[sub_resource type="Resource" id="Resource_686qq"]
+script = ExtResource("2_ki3gt")
+label = "Wave 3"
+enemy_ids = Array[StringName]([&"night_shade", &"night_shade", &"marsh_slime", &"cinder_wisp"])
+break_delay = 1.5
+
+[resource]
+script = ExtResource("1_kxfdt")
+id = &"quest_sunken_causeway"
+display_name = "Sunken Causeway"
+description = "The old road under the marsh floods every season. This time something came back with it."
+recommended_level = 3
+requires_quest = &"quest_cinder_road"
+waves = Array[ExtResource("2_ki3gt")]([SubResource("Resource_sqws6"), SubResource("Resource_v1fke"), SubResource("Resource_686qq")])
+reward_xp = 190
+reward_currency = 90
+reward_items = Array[StringName]([&"resonance_bell"])

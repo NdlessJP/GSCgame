@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="1_gspyl"]
+[ext_resource type="Resource" path="res://resources/abilities/husk_basic.tres" id="2_6ak5f"]
+[ext_resource type="Resource" path="res://resources/abilities/husk_ability.tres" id="3_bak5v"]
+[ext_resource type="Script" path="res://scripts/data/enemy_def.gd" id="4_a2o22"]
+
+[resource]
+script = ExtResource("4_a2o22")
+attacks = Array[ExtResource("1_gspyl")]([ExtResource("2_6ak5f"), ExtResource("3_bak5v")])
+break_max = 120.0
+break_duration = 4.5
+is_boss = false
+phase_change_threshold = 0.5
+phase_two_attacks = Array[ExtResource("1_gspyl")]([])
+target_preference = 3
+attack_start_delay = 1.1
+id = &"stone_husk"
+display_name = "Stone Husk"
+element = 1
+role = "Colossus"
+description = "An armoured husk of packed earth."
+base_max_hp = 200.0
+base_attack = 22.0
+base_defense = 28.0
+base_magic = 8.0
+base_magic_defense = 24.0
+hp_growth = 14.0
+attack_growth = 2.6
+defense_growth = 1.7
+magic_growth = 2.1
+magic_defense_growth = 1.6
+body_color = Color(0.5, 0.4, 0.3, 1)
+accent_color = Color(0.75, 0.65, 0.45, 1)
+body_size = Vector2(46, 78)
+body_shape = 2

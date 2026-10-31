@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EquipmentDef" load_steps=3 format=3]
+
+[ext_resource type="Resource" path="res://resources/abilities/eq_bulwark_up.tres" id="1_lkknt"]
+[ext_resource type="Script" path="res://scripts/data/equipment_def.gd" id="2_2ay0m"]
+
+[resource]
+script = ExtResource("2_2ay0m")
+id = &"bulwark_plate"
+display_name = "Bulwark Plate"
+description = "Heavy plate with a raised guard."
+category = 1
+unique_item = true
+attack_percent = 0.0
+defense_percent = 0.25
+magic_percent = 0.0
+magic_defense_percent = 0.0
+attack_flat = 0.0
+defense_flat = 0.0
+max_hp_flat = 40.0
+arts_per_attack = 0.0
+active_ability = ExtResource("1_lkknt")
+icon_color = Color(0.6, 0.75, 0.9, 1)

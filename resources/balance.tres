@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="BalanceConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/core/balance_config.gd" id="1_jcerd"]
+
+[resource]
+script = ExtResource("1_jcerd")
+defense_constant = 100.0
+critical_rate = 0.08
+critical_multiplier = 1.6
+broken_damage_multiplier = 1.25
+damage_variance = 0.0
+minimum_damage = 1.0
+element_advantage_multiplier = 1.5
+element_neutral_multiplier = 1.0
+arts_max = 200.0
+arts_cost = 100.0
+true_arts_cost = 200.0
+arts_per_basic_attack = 12.0
+arts_per_skill = 15.0
+break_damage_per_basic_attack = 5.0
+break_duration = 4.0
+xp_base = 80
+xp_per_level = 60
+currency_per_quest = 60
+wave_break_seconds = 2.0

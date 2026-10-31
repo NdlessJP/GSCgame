@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="CharacterDef" load_steps=10 format=3]
+
+[ext_resource type="Resource" path="res://resources/abilities/lysa_arts.tres" id="1_x6xq4"]
+[ext_resource type="Resource" path="res://resources/abilities/lysa_basic.tres" id="2_odwqf"]
+[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_gdgk7"]
+[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_a404y"]
+[ext_resource type="Resource" path="res://resources/abilities/lysa_skill.tres" id="5_8idxe"]
+[ext_resource type="Resource" path="res://resources/abilities/lysa_true.tres" id="6_oucvw"]
+
+[sub_resource type="Resource" id="Resource_hg1hk"]
+script = ExtResource("3_gdgk7")
+id = &"offence"
+display_name = "Offence"
+allowed_categories = Array[int]([2, 0])
+
+[sub_resource type="Resource" id="Resource_j8c1j"]
+script = ExtResource("3_gdgk7")
+id = &"guard"
+display_name = "Guard"
+allowed_categories = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_k7gkn"]
+script = ExtResource("3_gdgk7")
+id = &"aux"
+display_name = "Auxiliary"
+allowed_categories = Array[int]([2])
+
+[resource]
+script = ExtResource("4_a404y")
+basic_attack = ExtResource("2_odwqf")
+skill = ExtResource("5_8idxe")
+arts = ExtResource("1_x6xq4")
+true_arts = ExtResource("6_oucvw")
+equipment_slots = Array[ExtResource("3_gdgk7")]([SubResource("Resource_hg1hk"), SubResource("Resource_j8c1j"), SubResource("Resource_k7gkn")])
+lore = "She reads tides in teacups. Nothing in the party runs out of focus while she is breathing."
+roster_order = 3
+id = &"lysa_venne"
+display_name = "Lysa Venne"
+element = 2
+role = "Arcanist"
+description = "A support caster who keeps the arts gauge spinning."
+base_max_hp = 195.0
+base_attack = 11.0
+base_defense = 11.0
+base_magic = 26.0
+base_magic_defense = 20.0
+hp_growth = 15.0
+attack_growth = 1.1
+defense_growth = 1.5
+magic_growth = 3.1
+magic_defense_growth = 2.4
+body_color = Color(0.3, 0.6, 0.95, 1)
+accent_color = Color(0.7, 0.95, 1, 1)
+body_size = Vector2(28, 72)
+body_shape = 3

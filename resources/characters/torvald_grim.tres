@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="CharacterDef" load_steps=10 format=3]
+
+[ext_resource type="Resource" path="res://resources/abilities/torv_arts.tres" id="1_5a0e0"]
+[ext_resource type="Resource" path="res://resources/abilities/torv_basic.tres" id="2_tp8ry"]
+[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_2a6ej"]
+[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_m2ij2"]
+[ext_resource type="Resource" path="res://resources/abilities/torv_skill.tres" id="5_762tn"]
+[ext_resource type="Resource" path="res://resources/abilities/torv_true.tres" id="6_6kynd"]
+
+[sub_resource type="Resource" id="Resource_25ajq"]
+script = ExtResource("3_2a6ej")
+id = &"offence"
+display_name = "Offence"
+allowed_categories = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_fac52"]
+script = ExtResource("3_2a6ej")
+id = &"guard"
+display_name = "Guard"
+allowed_categories = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_r8v3j"]
+script = ExtResource("3_2a6ej")
+id = &"aux"
+display_name = "Auxiliary"
+allowed_categories = Array[int]([2])
+
+[resource]
+script = ExtResource("4_m2ij2")
+basic_attack = ExtResource("2_tp8ry")
+skill = ExtResource("5_762tn")
+arts = ExtResource("1_5a0e0")
+true_arts = ExtResource("6_6kynd")
+equipment_slots = Array[ExtResource("3_2a6ej")]([SubResource("Resource_25ajq"), SubResource("Resource_fac52"), SubResource("Resource_r8v3j")])
+lore = "He was carved out of mountain stone and finished with stubbornness. Nothing gets past him twice."
+roster_order = 2
+id = &"torvald_grim"
+display_name = "Torvald Grim"
+element = 1
+role = "Guardian"
+description = "A wall of a person who absorbs punishment."
+base_max_hp = 340.0
+base_attack = 18.0
+base_defense = 26.0
+base_magic = 10.0
+base_magic_defense = 20.0
+hp_growth = 30.0
+attack_growth = 1.8
+defense_growth = 3.0
+magic_growth = 1.0
+magic_defense_growth = 2.2
+body_color = Color(0.55, 0.42, 0.28, 1)
+accent_color = Color(0.85, 0.75, 0.5, 1)
+body_size = Vector2(40, 80)
+body_shape = 2

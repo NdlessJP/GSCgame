@@ -1,0 +1,115 @@
+[gd_resource type="Resource" script_class="AbilityDef" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_aibbx"]
+[ext_resource type="Resource" path="res://resources/statuses/status_might.tres" id="2_yedmd"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_y8f0c"]
+
+[sub_resource type="Resource" id="Resource_pfp5j"]
+script = ExtResource("1_aibbx")
+effect_type = 1
+target_mode_override = 3
+chance = 1.0
+power = 100.0
+flat_amount = 0.0
+damage_kind = 0
+element_override = -1
+can_crit = true
+ignore_defense = false
+lifesteal_percent = 0.0
+heal_power = 200.0
+heal_flat = 0.0
+full_heal_on_broken = false
+shield_flat = 0.0
+shield_percent_of_max_hp = 0.0
+shield_duration = 8.0
+shield_absorb_ratio = 1.0
+arts_amount = 0.0
+break_amount = 0.0
+duration_override = 0.0
+
+[sub_resource type="Resource" id="Resource_facgd"]
+script = ExtResource("1_aibbx")
+effect_type = 2
+target_mode_override = 3
+chance = 1.0
+power = 100.0
+flat_amount = 0.0
+damage_kind = 0
+element_override = -1
+can_crit = true
+ignore_defense = false
+lifesteal_percent = 0.0
+heal_power = 0.0
+heal_flat = 0.0
+full_heal_on_broken = false
+shield_flat = 0.0
+shield_percent_of_max_hp = 0.2
+shield_duration = 10.0
+shield_absorb_ratio = 1.0
+arts_amount = 0.0
+break_amount = 0.0
+duration_override = 0.0
+
+[sub_resource type="Resource" id="Resource_58xv6"]
+script = ExtResource("1_aibbx")
+effect_type = 4
+target_mode_override = 3
+chance = 1.0
+power = 100.0
+flat_amount = 0.0
+damage_kind = 0
+element_override = -1
+can_crit = true
+ignore_defense = false
+lifesteal_percent = 0.0
+heal_power = 0.0
+heal_flat = 0.0
+full_heal_on_broken = false
+shield_flat = 0.0
+shield_percent_of_max_hp = 0.0
+shield_duration = 8.0
+shield_absorb_ratio = 1.0
+arts_amount = 60.0
+break_amount = 0.0
+duration_override = 0.0
+
+[sub_resource type="Resource" id="Resource_wvmg8"]
+script = ExtResource("1_aibbx")
+effect_type = 3
+target_mode_override = 3
+chance = 1.0
+power = 100.0
+flat_amount = 0.0
+damage_kind = 0
+element_override = -1
+can_crit = true
+ignore_defense = false
+lifesteal_percent = 0.0
+heal_power = 0.0
+heal_flat = 0.0
+full_heal_on_broken = false
+shield_flat = 0.0
+shield_percent_of_max_hp = 0.0
+shield_duration = 8.0
+shield_absorb_ratio = 1.0
+arts_amount = 0.0
+break_amount = 0.0
+status = ExtResource("2_yedmd")
+duration_override = -1.0
+
+[resource]
+script = ExtResource("3_y8f0c")
+id = &"sera_true"
+display_name = "Dawnlit Communion"
+description = "A radiant rite: healing, wards, focus and courage."
+kind = 3
+cooldown = 0.0
+arts_cost = 200.0
+arts_generated = 0.0
+windup = 0.0
+target_mode = 3
+effects = Array[ExtResource("1_aibbx")]([SubResource("Resource_pfp5j"), SubResource("Resource_facgd"), SubResource("Resource_58xv6"), SubResource("Resource_wvmg8")])
+color = Color(1, 0.93, 0.66, 1)
+show_projectile = false
+projectile_speed = 460.0
+impact_scale = 1.0

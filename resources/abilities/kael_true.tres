@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_mq63e"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_dtbke"]
+
+[sub_resource type="Resource" id="Resource_d5oeb"]
+script = ExtResource("1_mq63e")
+effect_type = 0
+target_mode_override = -1
+chance = 1.0
+power = 180.0
+flat_amount = 0.0
+damage_kind = 1
+element_override = 0
+can_crit = true
+ignore_defense = false
+lifesteal_percent = 0.0
+heal_power = 0.0
+heal_flat = 0.0
+full_heal_on_broken = false
+shield_flat = 0.0
+shield_percent_of_max_hp = 0.0
+shield_duration = 8.0
+shield_absorb_ratio = 1.0
+arts_amount = 0.0
+break_amount = 0.0
+duration_override = 0.0
+
+[sub_resource type="Resource" id="Resource_mpqh3"]
+script = ExtResource("1_mq63e")
+effect_type = 5
+target_mode_override = -1
+chance = 1.0
+power = 100.0
+flat_amount = 0.0
+damage_kind = 0
+element_override = -1
+can_crit = true
+ignore_defense = false
+lifesteal_percent = 0.0
+heal_power = 0.0
+heal_flat = 0.0
+full_heal_on_broken = false
+shield_flat = 0.0
+shield_percent_of_max_hp = 0.0
+shield_duration = 8.0
+shield_absorb_ratio = 1.0
+arts_amount = 0.0
+break_amount = 15.0
+duration_override = 0.0
+
+[resource]
+script = ExtResource("2_dtbke")
+id = &"kael_true"
+display_name = "Blazing Verdict"
+description = "Judges every enemy on the field with a wave of fire."
+kind = 3
+cooldown = 0.0
+arts_cost = 200.0
+arts_generated = 0.0
+windup = 0.0
+target_mode = 1
+effects = Array[ExtResource("1_mq63e")]([SubResource("Resource_d5oeb"), SubResource("Resource_mpqh3")])
+color = Color(1, 0.42, 0.24, 1)
+show_projectile = false
+projectile_speed = 460.0
+impact_scale = 1.0

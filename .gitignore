@@ -1,0 +1,20 @@
+# Godot 4 editor / import cache
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+*.translation
+
+# Local engine binaries (download the matching Godot build instead)
+tools/Godot_v4.3-stable_linux.x86_64
+tools/*.zip
+tools/*.tar.gz
+
+# OS / tooling noise
+.DS_Store
+Thumbs.db
+.cache/
+.config/
+.local/
+*.log
+*.tmp

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="1_qdnhx"]
+[ext_resource type="Resource" path="res://resources/abilities/slime_basic.tres" id="2_ehvga"]
+[ext_resource type="Resource" path="res://resources/abilities/slime_ability.tres" id="3_cw252"]
+[ext_resource type="Script" path="res://scripts/data/enemy_def.gd" id="4_eek1p"]
+
+[resource]
+script = ExtResource("4_eek1p")
+attacks = Array[ExtResource("1_qdnhx")]([ExtResource("2_ehvga"), ExtResource("3_cw252")])
+break_max = 90.0
+break_duration = 4.0
+is_boss = false
+phase_change_threshold = 0.5
+phase_two_attacks = Array[ExtResource("1_qdnhx")]([])
+target_preference = 3
+attack_start_delay = 0.9
+id = &"marsh_slime"
+display_name = "Marsh Slime"
+element = 2
+role = "Bruiser"
+description = "A slow, heavy blob of the causeway."
+base_max_hp = 150.0
+base_attack = 19.0
+base_defense = 18.0
+base_magic = 10.0
+base_magic_defense = 16.0
+hp_growth = 14.0
+attack_growth = 2.6
+defense_growth = 1.7
+magic_growth = 2.1
+magic_defense_growth = 1.6
+body_color = Color(0.25, 0.55, 0.75, 1)
+accent_color = Color(0.6, 0.95, 0.9, 1)
+body_size = Vector2(42, 58)
+body_shape = 1

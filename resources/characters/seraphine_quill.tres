@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="CharacterDef" load_steps=10 format=3]
+
+[ext_resource type="Resource" path="res://resources/abilities/sera_arts.tres" id="1_pf2wq"]
+[ext_resource type="Resource" path="res://resources/abilities/sera_basic.tres" id="2_ath2s"]
+[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_whqdk"]
+[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_gj5nw"]
+[ext_resource type="Resource" path="res://resources/abilities/sera_skill.tres" id="5_og7fp"]
+[ext_resource type="Resource" path="res://resources/abilities/sera_true.tres" id="6_vlifl"]
+
+[sub_resource type="Resource" id="Resource_pvjon"]
+script = ExtResource("3_whqdk")
+id = &"offence"
+display_name = "Offence"
+allowed_categories = Array[int]([2])
+
+[sub_resource type="Resource" id="Resource_sp0vx"]
+script = ExtResource("3_whqdk")
+id = &"guard"
+display_name = "Guard"
+allowed_categories = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_xadgt"]
+script = ExtResource("3_whqdk")
+id = &"aux"
+display_name = "Auxiliary"
+allowed_categories = Array[int]([2])
+
+[resource]
+script = ExtResource("4_gj5nw")
+basic_attack = ExtResource("2_ath2s")
+skill = ExtResource("5_og7fp")
+arts = ExtResource("1_pf2wq")
+true_arts = ExtResource("6_vlifl")
+equipment_slots = Array[ExtResource("3_whqdk")]([SubResource("Resource_pvjon"), SubResource("Resource_sp0vx"), SubResource("Resource_xadgt")])
+lore = "She catalogues the last songs of a fallen order. Her wards are the reason the Ember Watch still exists."
+roster_order = 1
+id = &"seraphine_quill"
+display_name = "Seraphine Quill"
+element = 3
+role = "Cleric"
+description = "A gentle scholar who keeps the party upright."
+base_max_hp = 210.0
+base_attack = 12.0
+base_defense = 12.0
+base_magic = 28.0
+base_magic_defense = 22.0
+hp_growth = 17.0
+attack_growth = 1.2
+defense_growth = 1.6
+magic_growth = 3.3
+magic_defense_growth = 2.6
+body_color = Color(0.95, 0.9, 0.65, 1)
+accent_color = Color(1, 1, 0.85, 1)
+body_size = Vector2(30, 70)
+body_shape = 3

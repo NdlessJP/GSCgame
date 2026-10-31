@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="StatusDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_p3hae"]
+
+[resource]
+script = ExtResource("1_p3hae")
+id = &"status_wane"
+display_name = "Wane"
+description = "Magic defence reduced."
+color = Color(0.65, 0.35, 0.85, 1)
+icon = "-"
+duration = 8.0
+stack_policy = 0
+max_stacks = 1
+attack_percent = 0.0
+defense_percent = 0.0
+magic_percent = 0.0
+magic_defense_percent = -0.3
+attack_flat = 0.0
+defense_flat = 0.0
+magic_flat = 0.0
+magic_defense_flat = 0.0
+blocks_actions = false
+damage_reduction = 0.0
+arts_per_tick = 0.0
+arts_tick_interval = 1.0
+periodic_damage = 0.0
+periodic_interval = 1.0
+periodic_is_magical = false
+periodic_element = -1
+periodic_heal = 0.0
+shield_flat = 0.0
+shield_percent_of_max_hp = 0.0
+shield_absorb_ratio = 1.0

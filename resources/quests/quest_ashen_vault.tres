@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/quest_def.gd" id="1_xwub3"]
+[ext_resource type="Script" path="res://scripts/data/wave_def.gd" id="2_p0ivq"]
+
+[sub_resource type="Resource" id="Resource_fgb64"]
+script = ExtResource("2_p0ivq")
+label = "Wave 1"
+enemy_ids = Array[StringName]([&"stone_husk", &"stone_husk", &"night_shade"])
+break_delay = 1.5
+
+[sub_resource type="Resource" id="Resource_lwl4r"]
+script = ExtResource("2_p0ivq")
+label = "Wave 2"
+enemy_ids = Array[StringName]([&"marsh_slime", &"marsh_slime", &"cinder_wisp", &"cinder_wisp"])
+break_delay = 1.5
+
+[sub_resource type="Resource" id="Resource_idmvk"]
+script = ExtResource("2_p0ivq")
+label = "Wave 3"
+enemy_ids = Array[StringName]([&"aurelith_warden", &"cinder_wisp"])
+break_delay = 2.5
+
+[resource]
+script = ExtResource("1_xwub3")
+id = &"quest_ashen_vault"
+display_name = "The Ashen Vault"
+description = "The Ember Watch sealed something in the vault. The seal is failing."
+recommended_level = 5
+requires_quest = &"quest_sunken_causeway"
+waves = Array[ExtResource("2_p0ivq")]([SubResource("Resource_fgb64"), SubResource("Resource_lwl4r"), SubResource("Resource_idmvk")])
+reward_xp = 340
+reward_currency = 180
+reward_items = Array[StringName]([&"stormcaller_rod", &"venom_flask"])

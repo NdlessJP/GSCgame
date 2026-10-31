@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_gb16h"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_eyj5l"]
+
+[sub_resource type="Resource" id="Resource_rnhbl"]
+script = ExtResource("1_gb16h")
+effect_type = 0
+target_mode_override = -1
+chance = 1.0
+power = 85.0
+flat_amount = 0.0
+damage_kind = 1
+element_override = 2
+can_crit = true
+ignore_defense = false
+lifesteal_percent = 0.0
+heal_power = 0.0
+heal_flat = 0.0
+full_heal_on_broken = false
+shield_flat = 0.0
+shield_percent_of_max_hp = 0.0
+shield_duration = 8.0
+shield_absorb_ratio = 1.0
+arts_amount = 0.0
+break_amount = 0.0
+duration_override = 0.0
+
+[sub_resource type="Resource" id="Resource_dp6mc"]
+script = ExtResource("1_gb16h")
+effect_type = 5
+target_mode_override = -1
+chance = 1.0
+power = 100.0
+flat_amount = 0.0
+damage_kind = 0
+element_override = -1
+can_crit = true
+ignore_defense = false
+lifesteal_percent = 0.0
+heal_power = 0.0
+heal_flat = 0.0
+full_heal_on_broken = false
+shield_flat = 0.0
+shield_percent_of_max_hp = 0.0
+shield_duration = 8.0
+shield_absorb_ratio = 1.0
+arts_amount = 0.0
+break_amount = 6.0
+duration_override = 0.0
+
+[resource]
+script = ExtResource("2_eyj5l")
+id = &"lysa_basic"
+display_name = "Arcane Dart"
+description = "A dart of compressed water."
+kind = 0
+cooldown = 2.4
+arts_cost = 0.0
+arts_generated = 0.0
+windup = 0.0
+target_mode = 0
+effects = Array[ExtResource("1_gb16h")]([SubResource("Resource_rnhbl"), SubResource("Resource_dp6mc")])
+color = Color(0.31, 0.62, 1, 1)
+show_projectile = true
+projectile_speed = 460.0
+impact_scale = 1.0

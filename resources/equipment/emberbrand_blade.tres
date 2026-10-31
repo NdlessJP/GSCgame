@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EquipmentDef" load_steps=3 format=3]
+
+[ext_resource type="Resource" path="res://resources/abilities/eq_ember_strike.tres" id="1_i751v"]
+[ext_resource type="Script" path="res://scripts/data/equipment_def.gd" id="2_fbjln"]
+
+[resource]
+script = ExtResource("2_fbjln")
+id = &"emberbrand_blade"
+display_name = "Emberbrand Blade"
+description = "A warm blade that bites deep."
+category = 0
+unique_item = true
+attack_percent = 0.15
+defense_percent = 0.0
+magic_percent = 0.0
+magic_defense_percent = 0.0
+attack_flat = 0.0
+defense_flat = 0.0
+max_hp_flat = 0.0
+arts_per_attack = 3.0
+active_ability = ExtResource("1_i751v")
+icon_color = Color(0.95, 0.45, 0.25, 1)

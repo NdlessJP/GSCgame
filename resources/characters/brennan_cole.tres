@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="CharacterDef" load_steps=10 format=3]
+
+[ext_resource type="Resource" path="res://resources/abilities/bren_arts.tres" id="1_2ck0j"]
+[ext_resource type="Resource" path="res://resources/abilities/bren_basic.tres" id="2_8m246"]
+[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_icu7f"]
+[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_1hen4"]
+[ext_resource type="Resource" path="res://resources/abilities/bren_skill.tres" id="5_birlo"]
+[ext_resource type="Resource" path="res://resources/abilities/bren_true.tres" id="6_711hg"]
+
+[sub_resource type="Resource" id="Resource_unw6a"]
+script = ExtResource("3_icu7f")
+id = &"offence"
+display_name = "Offence"
+allowed_categories = Array[int]([0])
+
+[sub_resource type="Resource" id="Resource_hxbcy"]
+script = ExtResource("3_icu7f")
+id = &"guard"
+display_name = "Guard"
+allowed_categories = Array[int]([1])
+
+[sub_resource type="Resource" id="Resource_6v3py"]
+script = ExtResource("3_icu7f")
+id = &"aux"
+display_name = "Auxiliary"
+allowed_categories = Array[int]([2])
+
+[resource]
+script = ExtResource("4_1hen4")
+basic_attack = ExtResource("2_8m246")
+skill = ExtResource("5_birlo")
+arts = ExtResource("1_2ck0j")
+true_arts = ExtResource("6_711hg")
+equipment_slots = Array[ExtResource("3_icu7f")]([SubResource("Resource_unw6a"), SubResource("Resource_hxbcy"), SubResource("Resource_6v3py")])
+lore = "He range the burning roads before the Ember Watch did, and he still runs ahead of trouble."
+roster_order = 5
+id = &"brennan_cole"
+display_name = "Brennan Cole"
+element = 0
+role = "Ranger"
+description = "A fast archer who breaks guards and keeps the pace."
+base_max_hp = 215.0
+base_attack = 24.0
+base_defense = 13.0
+base_magic = 18.0
+base_magic_defense = 15.0
+hp_growth = 17.0
+attack_growth = 2.9
+defense_growth = 1.7
+magic_growth = 2.2
+magic_defense_growth = 1.8
+body_color = Color(0.9, 0.5, 0.25, 1)
+accent_color = Color(0.6, 0.85, 0.4, 1)
+body_size = Vector2(30, 74)
+body_shape = 1
