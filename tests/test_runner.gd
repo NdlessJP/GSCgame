@@ -49,6 +49,9 @@ func _run() -> void:
 	var flow: TestKit.Result = await BattleFlowTests.run(self)
 	_report("battle flow", flow)
 
+	var ui: TestKit.Result = await UITests.run(self)
+	_report("ui", ui)
+
 	# Restore the profile that was there before the test run.
 	if _save_backup != "":
 		var restore: FileAccess = FileAccess.open(SaveService.SAVE_PATH, FileAccess.WRITE)

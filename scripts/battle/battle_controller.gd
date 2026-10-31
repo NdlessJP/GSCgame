@@ -61,6 +61,15 @@ var party_ids: Array[StringName] = []
 var allies: Array[UnitState] = []
 var enemies: Array[UnitState] = []
 var preferred_target: UnitState = null
+## Running tally for the battle report shown on the results screen.
+var battle_stats: Dictionary = {
+	"duration": 0.0,
+	"damage_dealt": 0.0,
+	"damage_taken": 0.0,
+	"breaks": 0,
+	"abilities": 0,
+	"defeated": 0,
+}
 ## Simulation speed multiplier.  1.0 is real time; the HUD cycles through
 ## 1x / 2x / 3x.  It only affects the battle clock, never the engine clock,
 ## so it does not interfere with anything else running in the tree.
@@ -118,6 +127,14 @@ func _clear_battle() -> void:
 	enemies.clear()
 	pending.clear()
 	preferred_target = null
+	battle_stats = {
+		"duration": 0.0,
+		"damage_dealt": 0.0,
+		"damage_taken": 0.0,
+		"breaks": 0,
+		"abilities": 0,
+		"defeated": 0,
+	}
 	wave_index = -1
 	rewards_granted = false
 	last_results = {}
@@ -216,6 +233,8 @@ func toggle_pause() -> void:
 
 func _process(delta: float) -> void:
 	delta *= clampf(speed, 0.25, 4.0)
+	if state == State.COMBAT:
+		battle_stats["duration"] = float(battle_stats.get("duration", 0.0)) + delta
 	match state:
 		State.PREPARATION:
 			_prep_timer -= delta
@@ -344,6 +363,7 @@ func _apply_periodic_damage(unit: UnitState, event: Dictionary) -> void:
 	payload["source"] = source
 	payload["target"] = unit
 	payload["dot"] = true
+	_tally_damage(source if source != null else unit, unit, payload)
 	damage_dealt.emit(source if source != null else unit, unit, payload)
 	hp_changed.emit(unit)
 	_check_death(unit)
@@ -479,12 +499,22 @@ func _activate_with_target(caster: UnitState, ability: AbilityDef, chosen: UnitS
 	if ability.kind == AbilityDef.Kind.BASIC:
 		caster.gain_arts(caster.arts_generated_per_attack(balance), balance)
 	var events: Array[Dictionary] = AbilityExecutor.execute(ability, caster, targets, balance)
+	battle_stats["abilities"] = int(battle_stats.get("abilities", 0)) + 1
 	ability_used.emit(caster, ability, targets)
 	cooldown_changed.emit(caster, ability.id)
 	arts_changed.emit(caster)
 	for event: Dictionary in events:
 		_handle_event(event)
 	return true
+
+
+## Adds one damage event to the battle report.
+func _tally_damage(source: UnitState, target: UnitState, payload: Dictionary) -> void:
+	var amount: float = float(payload.get("amount", 0.0))
+	if source != null and source.is_ally:
+		battle_stats["damage_dealt"] = float(battle_stats.get("damage_dealt", 0.0)) + amount
+	elif target != null and target.is_ally:
+		battle_stats["damage_taken"] = float(battle_stats.get("damage_taken", 0.0)) + amount
 
 
 func _handle_event(event: Dictionary) -> void:
@@ -494,6 +524,7 @@ func _handle_event(event: Dictionary) -> void:
 			var target: UnitState = event.get("target", null)
 			var source: UnitState = event.get("source", null)
 			var payload: Dictionary = event.get("result", event)
+			_tally_damage(source, target, payload)
 			damage_dealt.emit(source, target, payload)
 			if float(payload.get("absorbed", 0.0)) > 0.0:
 				shield_absorbed.emit(target, float(payload.get("absorbed", 0.0)))
@@ -516,6 +547,7 @@ func _handle_event(event: Dictionary) -> void:
 		EffectApplier.EVENT_BREAK:
 			var break_unit: UnitState = event.get("target", null)
 			if bool(event.get("broke", false)):
+				battle_stats["breaks"] = int(battle_stats.get("breaks", 0)) + 1
 				break_started.emit(break_unit)
 				log_message.emit("%s is Broken!" % break_unit.display_name())
 
@@ -524,6 +556,7 @@ func _check_death(unit: UnitState) -> void:
 	if unit == null or not unit.is_dead or unit.death_reported:
 		return
 	unit.death_reported = true
+	battle_stats["defeated"] = int(battle_stats.get("defeated", 0)) + 1
 	unit_died.emit(unit)
 	log_message.emit("%s was defeated." % unit.display_name())
 
@@ -627,7 +660,9 @@ func _announce_result(victory: bool) -> void:
 	if _results_announced:
 		return
 	_results_announced = true
-	battle_finished.emit(victory, last_results)
+	var payload: Dictionary = last_results.duplicate()
+	payload["stats"] = battle_stats.duplicate()
+	battle_finished.emit(victory, payload)
 
 
 ## Aborts the battle without granting rewards (used when the player quits).

@@ -13,6 +13,8 @@ var inventory: Inventory = Inventory.new()
 var party: Array[StringName] = []
 var quests_unlocked: Array[StringName] = []
 var quests_completed: Array[StringName] = []
+## Master volume of the synthesised sound effects, 0.0 - 1.0.
+var volume: float = 0.8
 
 
 func character_data(character_id: StringName) -> Dictionary:
@@ -71,6 +73,7 @@ func to_dict() -> Dictionary:
 		completed.append(String(value))
 	return {
 		"currency": currency,
+		"volume": volume,
 		"characters": character_data_map,
 		"equipment": equipment_map,
 		"inventory": inventory.to_array(),
@@ -83,6 +86,7 @@ func to_dict() -> Dictionary:
 static func from_dict(data: Dictionary) -> GameState:
 	var state: GameState = GameState.new()
 	state.currency = int(data.get("currency", 0))
+	state.volume = clampf(float(data.get("volume", 0.8)), 0.0, 1.0)
 	var characters: Dictionary = data.get("characters", {})
 	for key: Variant in characters.keys():
 		if typeof(characters[key]) != TYPE_DICTIONARY:

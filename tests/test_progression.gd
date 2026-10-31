@@ -99,6 +99,7 @@ static func _test_save_round_trip(result: TestKit.Result) -> void:
 
 	var state: GameState = GameState.new()
 	state.currency = 321
+	state.volume = 0.35
 	state.set_character_progress(&"kael_vondar", 4, 55)
 	state.set_character_progress(&"rune_ashmaw", 2, 10)
 	state.party = [&"kael_vondar", &"seraphine_quill"]
@@ -114,6 +115,7 @@ static func _test_save_round_trip(result: TestKit.Result) -> void:
 	result.ok(restored != null, "A profile is returned")
 	if restored != null:
 		result.ok(restored.currency == 321, "Currency survives the round trip")
+		result.ok(absf(restored.volume - 0.35) < 0.001, "The volume setting survives the round trip")
 		result.ok(restored.character_level(&"kael_vondar") == 4, "Character levels survive the round trip")
 		result.ok(restored.character_xp(&"rune_ashmaw") == 10, "Character experience survives the round trip")
 		result.ok(restored.party.size() == 2, "The party survives the round trip")

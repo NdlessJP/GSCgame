@@ -19,6 +19,8 @@ var _state_label: Label = null
 var _pause_button: Button = null
 var _target_label: Label = null
 var _speed_button: Button = null
+var _help_button: Button = null
+var _help_overlay: HelpOverlay = null
 var _boss_panel: PanelContainer = null
 var _boss_name: Label = null
 var _boss_hp_bar: ProgressBar = null
@@ -82,13 +84,25 @@ func _build_top_bar() -> void:
 	var spacer: Control = Control.new()
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(spacer)
-	_speed_button = UiStyle.make_button("1x", 12, 26)
+	_help_button = UiStyle.make_button("?", 12, 26)
+	_help_button.tooltip_text = "Show the controls"
+	_help_button.pressed.connect(_on_help_pressed)
+	row.add_child(_help_button)
+	_speed_button = UiStyle.make_button("1x", 12,  26)
 	_speed_button.tooltip_text = "Battle speed (1x, 2x, 3x)"
 	_speed_button.pressed.connect(_on_speed_pressed)
 	row.add_child(_speed_button)
 	_pause_button = UiStyle.make_button("Pause", 12, 26)
 	_pause_button.pressed.connect(func() -> void: pause_pressed.emit())
 	row.add_child(_pause_button)
+
+
+func _on_help_pressed() -> void:
+	if _help_overlay == null:
+		_help_overlay = HelpOverlay.new()
+		_help_overlay.visible = false
+		_root.add_child(_help_overlay)
+	_help_overlay.visible = not _help_overlay.visible
 
 
 func _build_boss_panel() -> void:
@@ -260,7 +274,19 @@ func _on_target_changed(unit: UnitState) -> void:
 	if unit == null or unit.is_dead:
 		_target_label.text = "Target: -"
 		return
-	_target_label.text = "Target: %s" % unit.display_name()
+	_target_label.text = "Target: %s%s" % [unit.display_name(), _weak_to_text(unit)]
+
+
+## Lists the elements that hit this target harder, so the player can see at a
+## glance which hero to send in.
+func _weak_to_text(unit: UnitState) -> String:
+	var strong: Array[String] = []
+	for element: int in Elements.ALL_ELEMENTS:
+		if Elements.multiplier(element, unit.element()) > 1.0:
+			strong.append(Elements.element_name(element))
+	if strong.is_empty():
+		return ""
+	return "  (weak to %s)" % ", ".join(strong)
 
 
 func _on_speed_pressed() -> void:

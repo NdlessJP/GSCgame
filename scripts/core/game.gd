@@ -49,6 +49,17 @@ func _ready() -> void:
 		for issue: String in database.load_issues:
 			push_warning("GameDatabase: %s" % issue)
 	load_or_create_profile()
+	apply_volume()
+
+
+## Applies the stored master volume to the audio bus.
+func apply_volume() -> void:
+	var level: float = 0.8 if state == null else state.volume
+	var bus: int = AudioServer.get_bus_index(&"Master")
+	if bus < 0:
+		return
+	AudioServer.set_bus_volume_db(bus, linear_to_db(maxf(level, 0.0001)))
+	AudioServer.set_bus_mute(bus, level <= 0.001)
 
 
 # --------------------------------------------------------------------------
@@ -74,8 +85,18 @@ func load_or_create_profile() -> void:
 func new_game() -> void:
 	state = GameState.new()
 	_populate_new_profile()
+	apply_volume()
 	save_game()
 	_emit_changed()
+
+
+## Sets the master volume and stores it in the profile.
+func set_volume(level: float) -> void:
+	if state == null:
+		return
+	state.volume = clampf(level, 0.0, 1.0)
+	apply_volume()
+	save_game()
 
 
 func _populate_new_profile() -> void:

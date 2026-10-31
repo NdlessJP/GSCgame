@@ -6,6 +6,7 @@ var _outcome_label: Label = null
 var _quest_label: Label = null
 var _summary_box: VBoxContainer = null
 var _party_box: VBoxContainer = null
+var _report_box: VBoxContainer = null
 
 
 func _ready() -> void:
@@ -61,6 +62,19 @@ func _build() -> void:
 	_summary_box.add_theme_constant_override("separation", 4)
 	reward_box.add_child(_summary_box)
 
+	# Battle report.
+	var report_panel: PanelContainer = PanelContainer.new()
+	report_panel.add_theme_stylebox_override("panel", UiStyle.panel(UiStyle.PANEL, UiStyle.BORDER, 8, 1))
+	report_panel.custom_minimum_size = Vector2(300, 0)
+	columns.add_child(report_panel)
+	var report_box: VBoxContainer = VBoxContainer.new()
+	report_box.add_theme_constant_override("separation", 5)
+	report_panel.add_child(report_box)
+	report_box.add_child(UiStyle.make_label("Battle Report", 18, UiStyle.ACCENT))
+	_report_box = VBoxContainer.new()
+	_report_box.add_theme_constant_override("separation", 4)
+	report_box.add_child(_report_box)
+
 	# Party progress.
 	var party_panel: PanelContainer = PanelContainer.new()
 	party_panel.add_theme_stylebox_override("panel", UiStyle.panel(UiStyle.PANEL, UiStyle.BORDER, 8, 1))
@@ -104,6 +118,23 @@ func _build() -> void:
 	_populate()
 
 
+## Fills the battle report column from the statistics the controller kept
+## during the fight.
+func _populate_report(stats: Dictionary) -> void:
+	for child: Node in _report_box.get_children():
+		child.queue_free()
+	if stats.is_empty():
+		_report_box.add_child(UiStyle.make_label("No battle data.", 12, UiStyle.TEXT_DIM))
+		return
+	var duration: float = float(stats.get("duration", 0.0))
+	_report_box.add_child(UiStyle.make_label("Time: %.1fs" % duration, 13))
+	_report_box.add_child(UiStyle.make_label("Damage dealt: %d" % int(round(float(stats.get("damage_dealt", 0.0)))), 13))
+	_report_box.add_child(UiStyle.make_label("Damage taken: %d" % int(round(float(stats.get("damage_taken", 0.0)))), 13))
+	_report_box.add_child(UiStyle.make_label("Abilities used: %d" % int(stats.get("abilities", 0)), 13))
+	_report_box.add_child(UiStyle.make_label("Breaks triggered: %d" % int(stats.get("breaks", 0)), 13, UiStyle.BREAK))
+	_report_box.add_child(UiStyle.make_label("Enemies defeated: %d" % int(stats.get("defeated", 0)), 13))
+
+
 func _populate() -> void:
 	var victory: bool = Game.last_battle_victory
 	_outcome_label.text = "Victory" if victory else "Defeat"
@@ -128,6 +159,8 @@ func _populate() -> void:
 				var item_def: EquipmentDef = Game.database.equipment_def(instance.item_id)
 				if item_def != null:
 					_summary_box.add_child(UiStyle.make_label("New item: %s" % item_def.display_name, 13, UiStyle.GOOD))
+
+	_populate_report(results.get("stats", {}) as Dictionary)
 
 	var levels: Dictionary = results.get("levels", {})
 	if levels.is_empty():

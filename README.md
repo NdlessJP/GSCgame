@@ -52,11 +52,11 @@ Main Menu ──► Party Setup ──► Quest Board ──► Battle (3 waves)
         (Party & Gear / Quest Board are reachable from the menu and the results screen)
 ```
 
-* **Main Menu** – start, quest board, party & gear, quit.
+* **Main Menu** – start, quest board, party & gear, controls, volume, reset profile, quit.
 * **Party & Gear** – roster, 4 party slots, stats, abilities, equipment, level & XP.
 * **Quest Board** – three quests, unlock state, recommended level, rewards, encounter preview.
 * **Battle** – preparation → wave 1 → wave transition → wave 2 → wave transition → wave 3 → victory/defeat.
-* **Results** – XP, sigil shards, item drops, level-ups, and buttons to party setup / retry / quest board / menu.
+* **Results** – XP, sigil shards, item drops, level-ups, a **battle report** (time, damage dealt and taken, abilities used, breaks triggered, enemies defeated) and buttons to party setup / retry / quest board / menu.
 * **Pause menu** – resume, retry, return to quest board.
 
 ## 4. Controls
@@ -180,8 +180,11 @@ leaks past its duration (covered by an automated test).
 ### 5.9 Reading the battlefield
 
 * The top bar shows the quest, the current wave, the battle state, the **current
-  preferred target** and a **battle speed toggle** (1x / 2x / 3x). The speed only
-  multiplies the battle clock, so nothing else in the game is affected.
+  preferred target** (with the elements that hit it harder) and a **battle speed toggle**
+  (1x / 2x / 3x). The speed only multiplies the battle clock, so nothing else in the
+  game is affected.
+* A **Controls** button (main menu) and a **?** button (battle) open the same overlay
+  that lists every mouse action and keyboard shortcut.
 * Every party member's panel shows the **name of the ability** on the button, with its
   cost or remaining cooldown underneath, and a tooltip with the full description.
 * Abilities with a wind-up draw a **pulsing telegraph ring** around the caster and
@@ -260,7 +263,7 @@ twice; you need two copies to equip two characters.
 * The save file is JSON in the Godot **user data directory**
   (`user://ashen_vanguard_save.json`), with a **schema version**.
 * Saved: currency, character levels/XP, owned equipment, party composition and
-  assignments, quest unlocks and completions.
+  assignments, quest unlocks and completions, and the master volume.
 * **Not saved:** temporary battle state (HP, cooldowns, gauges, wave progress).
 * A missing or corrupt save is handled gracefully: the file is quarantined (renamed) and
   a fresh profile is started; invalid ids are validated and dropped on load.
@@ -281,7 +284,8 @@ scripts/
   inventory/             # item instances, ownership and equip rules
   progression/           # XP curve and stat growth
   saving/                # save_service (JSON, schema version, corrupt quarantine)
-  ui/                    # menus, battle HUD, unit panels, floating text, projectiles
+  ui/                    # menus, battle HUD, unit panels, floating text, projectiles,
+                         #   help overlay
 resources/               # generated .tres content (characters, enemies, items, quests, ...)
 assets/placeholders/     # placeholder visual notes and reference art
 tools/                   # build_content.gd (content generator), screenshot_tour.gd
@@ -350,13 +354,14 @@ The combat rules never read visual state, so replacing art cannot change balance
 
 ## 11. Tests
 
-`tests/test_runner.tscn` runs three suites — **223 checks, all passing**:
+`tests/test_runner.tscn` runs four suites — **261 checks, all passing**:
 
 | Suite | Checks | Covers |
 | --- | --- | --- |
 | `tests/test_combat.gd` | 117 | damage formula & mitigation, element table, crits, shields absorbing before HP, arts gauge spending and refusal, cooldown enforcement (rapid clicks cannot bypass it), status application/expiration/stat restoration, break start/end/reset, targeting and retargeting, dead units cannot act or be targeted, wave difficulty scaling, every synthesised sound contains real audio and rapid sounds are throttled |
-| `tests/test_progression.gd` | 81 | XP curve, stat growth, level-up, currency, item drops, equipment ownership (a copy cannot be equipped twice), slot/category compatibility, party slot rules (no duplicates, max 4), reward duplication guard, save round-trip, corrupt-save recovery, quest unlock validation |
+| `tests/test_progression.gd` | 82 | XP curve, stat growth, level-up, currency, item drops, equipment ownership (a copy cannot be equipped twice), slot/category compatibility, party slot rules (no duplicates, max 4), reward duplication guard, save round-trip (including the volume setting), corrupt-save recovery, quest unlock validation |
 | `tests/test_battle_flow.gd` | 25 | a full quest is played to victory by an auto-pilot (each quest is fought by a party at its recommended level), wave transitions leave no orphans, boss phase change happens exactly once, break triggers, ability wind-ups are telegraphed, pause freezes timers and HP, retry resets battle state, rewards are granted exactly once |
+| `tests/test_ui.gd` | 37 | every screen instantiates, builds its widgets, covers the viewport and has clickable buttons; the controls overlay covers the whole viewport |
 
 Run them with:
 
