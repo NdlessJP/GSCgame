@@ -25,3 +25,6 @@ Thumbs.db
 *.key
 id_rsa*
 id_ed25519*
+
+# Sandbox/apt artifacts
+.sudo_as_admin_successful
