@@ -119,6 +119,19 @@ func character_ids() -> Array:
 	return result
 
 
+## The quest a fresh profile starts with: the one that has no requirement.
+## When several qualify, the one with the lowest recommended level wins.
+func entry_quest() -> QuestDef:
+	var best: QuestDef = null
+	for id: Variant in quests.keys():
+		var quest: QuestDef = quests[id]
+		if quest == null or quest.requires_quest != &"":
+			continue
+		if best == null or quest.recommended_level < best.recommended_level:
+			best = quest
+	return best
+
+
 func quest_ids() -> Array:
 	var result: Array = []
 	for id: Variant in quests.keys():

@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_8ijf1"]
-[ext_resource type="Resource" path="res://resources/statuses/status_bulwark.tres" id="2_6hycg"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_x5rt4"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_78l62"]
+[ext_resource type="Resource" path="res://resources/statuses/status_bulwark.tres" id="2_8qsyk"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_5k4x3"]
 
-[sub_resource type="Resource" id="Resource_6ylmb"]
-script = ExtResource("1_8ijf1")
+[sub_resource type="Resource" id="Resource_70o7y"]
+script = ExtResource("1_78l62")
 effect_type = 3
 target_mode_override = 5
 chance = 1.0
@@ -25,11 +25,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_6hycg")
+status = ExtResource("2_8qsyk")
 duration_override = -1.0
 
-[sub_resource type="Resource" id="Resource_dkbjv"]
-script = ExtResource("1_8ijf1")
+[sub_resource type="Resource" id="Resource_2j6s6"]
+script = ExtResource("1_78l62")
 effect_type = 2
 target_mode_override = 5
 chance = 1.0
@@ -52,7 +52,7 @@ break_amount = 0.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("3_x5rt4")
+script = ExtResource("3_5k4x3")
 id = &"torv_skill"
 display_name = "Bulwark Stance"
 description = "Raises a defensive stance and a shield."
@@ -62,7 +62,7 @@ arts_cost = 0.0
 arts_generated = 15.0
 windup = 0.0
 target_mode = 5
-effects = Array[ExtResource("1_8ijf1")]([SubResource("Resource_6ylmb"), SubResource("Resource_dkbjv")])
+effects = Array[ExtResource("1_78l62")]([SubResource("Resource_70o7y"), SubResource("Resource_2j6s6")])
 color = Color(0.72, 0.52, 0.28, 1)
 show_projectile = false
 projectile_speed = 460.0

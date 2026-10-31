@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_ye2wb"]
-[ext_resource type="Resource" path="res://resources/statuses/status_venom.tres" id="2_plfbw"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_aylfn"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_q42yc"]
+[ext_resource type="Resource" path="res://resources/statuses/status_venom.tres" id="2_b7nef"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_who53"]
 
-[sub_resource type="Resource" id="Resource_4e8oc"]
-script = ExtResource("1_ye2wb")
+[sub_resource type="Resource" id="Resource_1gx3y"]
+script = ExtResource("1_q42yc")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -27,8 +27,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_elbp0"]
-script = ExtResource("1_ye2wb")
+[sub_resource type="Resource" id="Resource_mogqb"]
+script = ExtResource("1_q42yc")
 effect_type = 3
 target_mode_override = -1
 chance = 0.6
@@ -48,11 +48,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_plfbw")
+status = ExtResource("2_b7nef")
 duration_override = -1.0
 
 [resource]
-script = ExtResource("3_aylfn")
+script = ExtResource("3_who53")
 id = &"boss_chains"
 display_name = "Magma Chains"
 description = "Chains of magma seize one ally."
@@ -62,7 +62,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.9
 target_mode = 0
-effects = Array[ExtResource("1_ye2wb")]([SubResource("Resource_4e8oc"), SubResource("Resource_elbp0")])
+effects = Array[ExtResource("1_q42yc")]([SubResource("Resource_1gx3y"), SubResource("Resource_mogqb")])
 color = Color(1, 0.55, 0.15, 1)
 show_projectile = false
 projectile_speed = 460.0

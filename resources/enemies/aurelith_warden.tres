@@ -1,23 +1,23 @@
 [gd_resource type="Resource" script_class="EnemyDef" load_steps=9 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="1_lxglj"]
-[ext_resource type="Resource" path="res://resources/abilities/boss_basic.tres" id="2_3w2w3"]
-[ext_resource type="Resource" path="res://resources/abilities/boss_cataclysm.tres" id="3_o0rbp"]
-[ext_resource type="Resource" path="res://resources/abilities/boss_bulwark.tres" id="4_i2rcu"]
-[ext_resource type="Resource" path="res://resources/abilities/boss_phase.tres" id="5_srdjf"]
-[ext_resource type="Resource" path="res://resources/abilities/boss_eruption.tres" id="6_mqn1m"]
-[ext_resource type="Resource" path="res://resources/abilities/boss_chains.tres" id="7_fiur3"]
-[ext_resource type="Script" path="res://scripts/data/enemy_def.gd" id="8_bxe3b"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="1_5tklk"]
+[ext_resource type="Resource" path="res://resources/abilities/boss_basic.tres" id="2_sirxc"]
+[ext_resource type="Resource" path="res://resources/abilities/boss_cataclysm.tres" id="3_b11by"]
+[ext_resource type="Resource" path="res://resources/abilities/boss_bulwark.tres" id="4_v34fa"]
+[ext_resource type="Resource" path="res://resources/abilities/boss_phase.tres" id="5_7u533"]
+[ext_resource type="Resource" path="res://resources/abilities/boss_eruption.tres" id="6_mi7oq"]
+[ext_resource type="Resource" path="res://resources/abilities/boss_chains.tres" id="7_1skfe"]
+[ext_resource type="Script" path="res://scripts/data/enemy_def.gd" id="8_bv6qx"]
 
 [resource]
-script = ExtResource("8_bxe3b")
-attacks = Array[ExtResource("1_lxglj")]([ExtResource("2_3w2w3"), ExtResource("3_o0rbp"), ExtResource("4_i2rcu")])
+script = ExtResource("8_bv6qx")
+attacks = Array[ExtResource("1_5tklk")]([ExtResource("2_sirxc"), ExtResource("3_b11by"), ExtResource("4_v34fa")])
 break_max = 120.0
 break_duration = 5.0
 is_boss = true
 phase_change_threshold = 0.5
-phase_change_ability = ExtResource("5_srdjf")
-phase_two_attacks = Array[ExtResource("1_lxglj")]([ExtResource("6_mqn1m"), ExtResource("7_fiur3")])
+phase_change_ability = ExtResource("5_7u533")
+phase_two_attacks = Array[ExtResource("1_5tklk")]([ExtResource("6_mi7oq"), ExtResource("7_1skfe")])
 target_preference = 2
 attack_start_delay = 1.5
 id = &"aurelith_warden"

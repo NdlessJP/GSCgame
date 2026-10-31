@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="EnemyDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="1_y02c1"]
-[ext_resource type="Resource" path="res://resources/abilities/shade_basic.tres" id="2_7xggl"]
-[ext_resource type="Resource" path="res://resources/abilities/shade_ability.tres" id="3_56pdq"]
-[ext_resource type="Script" path="res://scripts/data/enemy_def.gd" id="4_d1p0t"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="1_lim3w"]
+[ext_resource type="Resource" path="res://resources/abilities/shade_basic.tres" id="2_wrmeb"]
+[ext_resource type="Resource" path="res://resources/abilities/shade_ability.tres" id="3_uls8y"]
+[ext_resource type="Script" path="res://scripts/data/enemy_def.gd" id="4_kkekn"]
 
 [resource]
-script = ExtResource("4_d1p0t")
-attacks = Array[ExtResource("1_y02c1")]([ExtResource("2_7xggl"), ExtResource("3_56pdq")])
+script = ExtResource("4_kkekn")
+attacks = Array[ExtResource("1_lim3w")]([ExtResource("2_wrmeb"), ExtResource("3_uls8y")])
 break_max = 70.0
 break_duration = 3.5
 is_boss = false
 phase_change_threshold = 0.5
-phase_two_attacks = Array[ExtResource("1_y02c1")]([])
+phase_two_attacks = Array[ExtResource("1_lim3w")]([])
 target_preference = 3
 attack_start_delay = 0.7
 id = &"night_shade"

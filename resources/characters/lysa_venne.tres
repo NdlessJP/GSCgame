@@ -1,37 +1,37 @@
 [gd_resource type="Resource" script_class="CharacterDef" load_steps=10 format=3]
 
-[ext_resource type="Resource" path="res://resources/abilities/lysa_arts.tres" id="1_7ndt5"]
-[ext_resource type="Resource" path="res://resources/abilities/lysa_basic.tres" id="2_auqr7"]
-[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_jq6mq"]
-[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_l0p35"]
-[ext_resource type="Resource" path="res://resources/abilities/lysa_skill.tres" id="5_c40pj"]
-[ext_resource type="Resource" path="res://resources/abilities/lysa_true.tres" id="6_uemwb"]
+[ext_resource type="Resource" path="res://resources/abilities/lysa_arts.tres" id="1_o5pfm"]
+[ext_resource type="Resource" path="res://resources/abilities/lysa_basic.tres" id="2_1gsso"]
+[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_1mat3"]
+[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_5npa1"]
+[ext_resource type="Resource" path="res://resources/abilities/lysa_skill.tres" id="5_5ubip"]
+[ext_resource type="Resource" path="res://resources/abilities/lysa_true.tres" id="6_kki3x"]
 
-[sub_resource type="Resource" id="Resource_043x1"]
-script = ExtResource("3_jq6mq")
+[sub_resource type="Resource" id="Resource_txxrx"]
+script = ExtResource("3_1mat3")
 id = &"offence"
 display_name = "Offence"
 allowed_categories = Array[int]([2, 0])
 
-[sub_resource type="Resource" id="Resource_k0ugl"]
-script = ExtResource("3_jq6mq")
+[sub_resource type="Resource" id="Resource_5ljf8"]
+script = ExtResource("3_1mat3")
 id = &"guard"
 display_name = "Guard"
 allowed_categories = Array[int]([1])
 
-[sub_resource type="Resource" id="Resource_v7ycm"]
-script = ExtResource("3_jq6mq")
+[sub_resource type="Resource" id="Resource_dtdfl"]
+script = ExtResource("3_1mat3")
 id = &"aux"
 display_name = "Auxiliary"
 allowed_categories = Array[int]([2])
 
 [resource]
-script = ExtResource("4_l0p35")
-basic_attack = ExtResource("2_auqr7")
-skill = ExtResource("5_c40pj")
-arts = ExtResource("1_7ndt5")
-true_arts = ExtResource("6_uemwb")
-equipment_slots = Array[ExtResource("3_jq6mq")]([SubResource("Resource_043x1"), SubResource("Resource_k0ugl"), SubResource("Resource_v7ycm")])
+script = ExtResource("4_5npa1")
+basic_attack = ExtResource("2_1gsso")
+skill = ExtResource("5_5ubip")
+arts = ExtResource("1_o5pfm")
+true_arts = ExtResource("6_kki3x")
+equipment_slots = Array[ExtResource("3_1mat3")]([SubResource("Resource_txxrx"), SubResource("Resource_5ljf8"), SubResource("Resource_dtdfl")])
 lore = "She reads tides in teacups. Nothing in the party runs out of focus while she is breathing."
 roster_order = 3
 id = &"lysa_venne"

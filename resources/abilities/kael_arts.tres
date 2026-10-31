@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_6sm14"]
-[ext_resource type="Resource" path="res://resources/statuses/status_venom.tres" id="2_2kxm1"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_2w3o0"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_3xrkp"]
+[ext_resource type="Resource" path="res://resources/statuses/status_venom.tres" id="2_osro2"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_xshmm"]
 
-[sub_resource type="Resource" id="Resource_bdi5r"]
-script = ExtResource("1_6sm14")
+[sub_resource type="Resource" id="Resource_61xps"]
+script = ExtResource("1_3xrkp")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -27,8 +27,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_soewh"]
-script = ExtResource("1_6sm14")
+[sub_resource type="Resource" id="Resource_4ri05"]
+script = ExtResource("1_3xrkp")
 effect_type = 3
 target_mode_override = -1
 chance = 1.0
@@ -48,11 +48,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_2kxm1")
+status = ExtResource("2_osro2")
 duration_override = -1.0
 
 [resource]
-script = ExtResource("3_2w3o0")
+script = ExtResource("3_xshmm")
 id = &"kael_arts"
 display_name = "Ember Rush"
 description = "Bursts the target in flame and poisons it."
@@ -62,7 +62,7 @@ arts_cost = 100.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 0
-effects = Array[ExtResource("1_6sm14")]([SubResource("Resource_bdi5r"), SubResource("Resource_soewh")])
+effects = Array[ExtResource("1_3xrkp")]([SubResource("Resource_61xps"), SubResource("Resource_4ri05")])
 color = Color(1, 0.42, 0.24, 1)
 show_projectile = true
 projectile_speed = 460.0

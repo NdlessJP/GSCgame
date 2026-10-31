@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="1_wpgjf"]
+[ext_resource type="Resource" path="res://resources/abilities/cantor_basic.tres" id="2_3w1ol"]
+[ext_resource type="Resource" path="res://resources/abilities/cantor_ability.tres" id="3_5cq1o"]
+[ext_resource type="Script" path="res://scripts/data/enemy_def.gd" id="4_k4prc"]
+
+[resource]
+script = ExtResource("4_k4prc")
+attacks = Array[ExtResource("1_wpgjf")]([ExtResource("2_3w1ol"), ExtResource("3_5cq1o")])
+break_max = 55.0
+break_duration = 3.0
+is_boss = false
+phase_change_threshold = 0.5
+phase_two_attacks = Array[ExtResource("1_wpgjf")]([])
+target_preference = 3
+attack_start_delay = 1.2
+id = &"ashen_cantor"
+display_name = "Ashen Cantor"
+element = 3
+role = "Cantor"
+description = "It sings the others into a fury. Silence it first."
+base_max_hp = 80.0
+base_attack = 10.0
+base_defense = 9.0
+base_magic = 20.0
+base_magic_defense = 13.0
+hp_growth = 14.0
+attack_growth = 2.6
+defense_growth = 1.7
+magic_growth = 2.1
+magic_defense_growth = 1.6
+body_color = Color(0.95, 0.72, 0.35, 1)
+accent_color = Color(1, 0.95, 0.75, 1)
+body_size = Vector2(30, 66)
+body_shape = 4

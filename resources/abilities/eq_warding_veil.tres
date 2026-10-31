@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_ap76x"]
-[ext_resource type="Resource" path="res://resources/statuses/status_bulwark.tres" id="2_ykdqy"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_xmxuh"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_8hq45"]
+[ext_resource type="Resource" path="res://resources/statuses/status_bulwark.tres" id="2_px7pf"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_ucbpp"]
 
-[sub_resource type="Resource" id="Resource_2m4k1"]
-script = ExtResource("1_ap76x")
+[sub_resource type="Resource" id="Resource_40bou"]
+script = ExtResource("1_8hq45")
 effect_type = 2
 target_mode_override = 5
 chance = 1.0
@@ -27,8 +27,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_pcu52"]
-script = ExtResource("1_ap76x")
+[sub_resource type="Resource" id="Resource_j16e1"]
+script = ExtResource("1_8hq45")
 effect_type = 3
 target_mode_override = 5
 chance = 1.0
@@ -48,11 +48,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_ykdqy")
+status = ExtResource("2_px7pf")
 duration_override = -1.0
 
 [resource]
-script = ExtResource("3_xmxuh")
+script = ExtResource("3_ucbpp")
 id = &"eq_warding_veil"
 display_name = "Warding Veil"
 description = "A veil that turns aside harm."
@@ -62,7 +62,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 5
-effects = Array[ExtResource("1_ap76x")]([SubResource("Resource_2m4k1"), SubResource("Resource_pcu52")])
+effects = Array[ExtResource("1_8hq45")]([SubResource("Resource_40bou"), SubResource("Resource_j16e1")])
 color = Color(0.65, 0.85, 1, 1)
 show_projectile = false
 projectile_speed = 460.0

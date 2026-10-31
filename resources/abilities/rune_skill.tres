@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_d02sj"]
-[ext_resource type="Resource" path="res://resources/statuses/status_sundered.tres" id="2_i5sjx"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_kbohq"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_ou6ci"]
+[ext_resource type="Resource" path="res://resources/statuses/status_sundered.tres" id="2_h26ng"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_5x1jv"]
 
-[sub_resource type="Resource" id="Resource_igu25"]
-script = ExtResource("1_d02sj")
+[sub_resource type="Resource" id="Resource_pyfot"]
+script = ExtResource("1_ou6ci")
 effect_type = 3
 target_mode_override = -1
 chance = 1.0
@@ -25,11 +25,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_i5sjx")
+status = ExtResource("2_h26ng")
 duration_override = -1.0
 
-[sub_resource type="Resource" id="Resource_bn475"]
-script = ExtResource("1_d02sj")
+[sub_resource type="Resource" id="Resource_pjcb4"]
+script = ExtResource("1_ou6ci")
 effect_type = 5
 target_mode_override = -1
 chance = 1.0
@@ -52,7 +52,7 @@ break_amount = 30.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("3_kbohq")
+script = ExtResource("3_5x1jv")
 id = &"rune_skill"
 display_name = "Sunder Mark"
 description = "Marks the target: less defence, much less guard."
@@ -62,7 +62,7 @@ arts_cost = 0.0
 arts_generated = 15.0
 windup = 0.0
 target_mode = 0
-effects = Array[ExtResource("1_d02sj")]([SubResource("Resource_igu25"), SubResource("Resource_bn475")])
+effects = Array[ExtResource("1_ou6ci")]([SubResource("Resource_pyfot"), SubResource("Resource_pjcb4")])
 color = Color(0.66, 0.36, 0.88, 1)
 show_projectile = false
 projectile_speed = 460.0

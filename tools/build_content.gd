@@ -444,6 +444,29 @@ func _build_abilities() -> void:
 	var eq_venom_splash: AbilityDef = _ability("eq_venom_splash", "Venom Splash", AbilityDef.Kind.SKILL, 9.0, Targeting.Mode.SINGLE_TARGET, [_damage(80.0, EffectDef.DamageKind.MAGICAL, dark), _status("status_venom")], {"description": "A thrown flask of venom.", "color": Color(0.45, 0.85, 0.35)})
 	_abilities["eq_venom_splash"] = _save(eq_venom_splash, "abilities", "eq_venom_splash.tres")
 
+	# --- New equipment actives ---------------------------------------------
+	var eq_thunderclap: AbilityDef = _ability("eq_thunderclap", "Thunderclap", AbilityDef.Kind.SKILL, 10.0, Targeting.Mode.ALL_ENEMIES, [_damage(110.0, EffectDef.DamageKind.MAGICAL, water), _arts(20.0, Targeting.Mode.SELF)], {"description": "A crack of storm over the whole field.", "color": Color(0.45, 0.8, 1.0)})
+	_abilities["eq_thunderclap"] = _save(eq_thunderclap, "abilities", "eq_thunderclap.tres")
+
+	var eq_party_ward: AbilityDef = _ability("eq_party_ward", "Party Ward", AbilityDef.Kind.SKILL, 15.0, Targeting.Mode.ALL_ALLIES, [_shield(0.12, 0.0, 8.0, Targeting.Mode.ALL_ALLIES)], {"description": "A charm that shields the whole party.", "color": Color(0.6, 0.85, 1.0)})
+	_abilities["eq_party_ward"] = _save(eq_party_ward, "abilities", "eq_party_ward.tres")
+
+	var eq_warflute: AbilityDef = _ability("eq_warflute", "Warflute", AbilityDef.Kind.SKILL, 9.0, Targeting.Mode.LOWEST_HP_ALLY, [_heal(0.0, Targeting.Mode.LOWEST_HP_ALLY, 70.0), _arts(40.0, Targeting.Mode.ALL_ALLIES)], {"description": "A pipe that mends and refocuses.", "color": Color(0.6, 0.95, 0.7)})
+	_abilities["eq_warflute"] = _save(eq_warflute, "abilities", "eq_warflute.tres")
+
+	# --- New enemy abilities ------------------------------------------------
+	var cantor_basic: AbilityDef = _ability("cantor_basic", "Chanting Note", AbilityDef.Kind.BASIC, 2.6, Targeting.Mode.SINGLE_TARGET, [_damage(85.0, EffectDef.DamageKind.MAGICAL, light)], {"description": "A single bright note.", "color": Elements.element_color(light)})
+	_abilities["cantor_basic"] = _save(cantor_basic, "abilities", "cantor_basic.tres")
+
+	var cantor_ability: AbilityDef = _ability("cantor_ability", "Ember Chorus", AbilityDef.Kind.SKILL, 14.0, Targeting.Mode.ALL_ALLIES, [_status("status_might", Targeting.Mode.ALL_ALLIES)], {"windup": 1.0, "description": "Sings the others into a fury.", "color": Color(1.0, 0.65, 0.35)})
+	_abilities["cantor_ability"] = _save(cantor_ability, "abilities", "cantor_ability.tres")
+
+	var rime_basic: AbilityDef = _ability("rime_basic", "Rime Strike", AbilityDef.Kind.BASIC, 2.9, Targeting.Mode.SINGLE_TARGET, [_damage(95.0, EffectDef.DamageKind.PHYSICAL, water)], {"description": "A slow, heavy blow.", "color": Elements.element_color(water)})
+	_abilities["rime_basic"] = _save(rime_basic, "abilities", "rime_basic.tres")
+
+	var rime_ability: AbilityDef = _ability("rime_ability", "Rimeguard", AbilityDef.Kind.SKILL, 15.0, Targeting.Mode.SELF, [_shield(0.18, 0.0, 10.0, Targeting.Mode.SELF), _status("status_bulwark", Targeting.Mode.SELF)], {"windup": 0.8, "description": "Raises a wall of rime.", "color": Color(0.55, 0.85, 1.0)})
+	_abilities["rime_ability"] = _save(rime_ability, "abilities", "rime_ability.tres")
+
 
 # --------------------------------------------------------------------------
 # Characters
@@ -787,6 +810,53 @@ func _build_enemies() -> void:
 	boss.target_preference = EnemyDef.TargetPreference.STRONGEST
 	_save(boss, "enemies", "aurelith_warden.tres")
 
+	# Ashen Cantor: a support enemy that sharpens the others.  Fragile, so it
+	# has to be the first target.
+	var cantor: EnemyDef = EnemyDef.new()
+	cantor.id = &"ashen_cantor"
+	cantor.display_name = "Ashen Cantor"
+	cantor.element = Elements.Element.LIGHT
+	cantor.role = "Cantor"
+	cantor.description = "It sings the others into a fury. Silence it first."
+	cantor.base_max_hp = 80.0
+	cantor.base_attack = 10.0
+	cantor.base_defense = 9.0
+	cantor.base_magic = 20.0
+	cantor.base_magic_defense = 13.0
+	cantor.break_max = 55.0
+	cantor.break_duration = 3.0
+	cantor.attacks = [_abilities["cantor_basic"], _abilities["cantor_ability"]]
+	cantor.body_color = Color(0.95, 0.72, 0.35)
+	cantor.accent_color = Color(1.0, 0.95, 0.75)
+	cantor.body_size = Vector2(30, 66)
+	cantor.body_shape = 4
+	cantor.attack_start_delay = 1.2
+	cantor.target_preference = EnemyDef.TargetPreference.ROTATE
+	_save(cantor, "enemies", "ashen_cantor.tres")
+
+	# Rimewarden: a slow wall that shields itself.
+	var rime: EnemyDef = EnemyDef.new()
+	rime.id = &"rime_warden"
+	rime.display_name = "Rimewarden"
+	rime.element = Elements.Element.WATER
+	rime.role = "Warden"
+	rime.description = "Cold given a shape and a grudge."
+	rime.base_max_hp = 240.0
+	rime.base_attack = 24.0
+	rime.base_defense = 30.0
+	rime.base_magic = 10.0
+	rime.base_magic_defense = 26.0
+	rime.break_max = 140.0
+	rime.break_duration = 4.5
+	rime.attacks = [_abilities["rime_basic"], _abilities["rime_ability"]]
+	rime.body_color = Color(0.35, 0.62, 0.78)
+	rime.accent_color = Color(0.8, 0.95, 1.0)
+	rime.body_size = Vector2(46, 76)
+	rime.body_shape = 2
+	rime.attack_start_delay = 1.0
+	rime.target_preference = EnemyDef.TargetPreference.STRONGEST
+	_save(rime, "enemies", "rime_warden.tres")
+
 
 # --------------------------------------------------------------------------
 # Equipment
@@ -912,6 +982,39 @@ func _build_equipment() -> void:
 	flask.icon_color = Color(0.45, 0.8, 0.35)
 	_save(flask, "equipment", "venom_flask.tres")
 
+	# --- New items ----------------------------------------------------------
+	var brand: EquipmentDef = EquipmentDef.new()
+	brand.id = &"stormbrand"
+	brand.display_name = "Stormbrand"
+	brand.description = "The air around it never stays still."
+	brand.category = EquipmentDef.Category.ATTACK
+	brand.magic_percent = 0.22
+	brand.arts_per_attack = 4.0
+	brand.active_ability = _abilities["eq_thunderclap"]
+	brand.icon_color = Color(0.45, 0.8, 1.0)
+	_save(brand, "equipment", "stormbrand.tres")
+
+	var charm: EquipmentDef = EquipmentDef.new()
+	charm.id = &"aegis_charm"
+	charm.display_name = "Aegis Charm"
+	charm.description = "It was meant for one, but it reaches further."
+	charm.category = EquipmentDef.Category.DEFENSE
+	charm.defense_percent = 0.18
+	charm.max_hp_flat = 30.0
+	charm.active_ability = _abilities["eq_party_ward"]
+	charm.icon_color = Color(0.6, 0.85, 1.0)
+	_save(charm, "equipment", "aegis_charm.tres")
+
+	var flute: EquipmentDef = EquipmentDef.new()
+	flute.id = &"war_flute"
+	flute.display_name = "Warflute"
+	flute.description = "It plays what the march needs."
+	flute.category = EquipmentDef.Category.SUPPORT
+	flute.magic_percent = 0.10
+	flute.active_ability = _abilities["eq_warflute"]
+	flute.icon_color = Color(0.6, 0.95, 0.7)
+	_save(flute, "equipment", "war_flute.tres")
+
 
 # --------------------------------------------------------------------------
 # Quests
@@ -976,6 +1079,22 @@ func _build_quests() -> void:
 		_wave("Wave 3", [&"aurelith_warden", &"cinder_wisp"], 2.5, 3, 1.35),
 	]
 	_save(q3, "quests", "quest_ashen_vault.tres")
+
+	var q4: QuestDef = QuestDef.new()
+	q4.id = &"quest_pale_gate"
+	q4.display_name = "The Pale Gate"
+	q4.description = "Beyond the vault the road turns white. Something keeps singing there."
+	q4.recommended_level = 7
+	q4.requires_quest = &"quest_ashen_vault"
+	q4.reward_xp = 520
+	q4.reward_currency = 240
+	q4.reward_items = [&"stormbrand", &"war_flute", &"aegis_charm"]
+	q4.waves = [
+		_wave("Wave 1", [&"ashen_cantor", &"stone_husk", &"stone_husk", &"night_shade"], 1.5, 3, 1.2),
+		_wave("Wave 2", [&"rime_warden", &"marsh_slime", &"marsh_slime", &"cinder_wisp"], 1.5, 3, 1.25),
+		_wave("Wave 3", [&"ashen_cantor", &"rime_warden", &"stone_husk", &"stone_husk", &"night_shade"], 1.5, 4, 1.3),
+	]
+	_save(q4, "quests", "quest_pale_gate.tres")
 
 
 func _build_balance() -> void:

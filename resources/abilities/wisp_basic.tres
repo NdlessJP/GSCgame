@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_re23s"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_hvwu5"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_dy0hg"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_6j31c"]
 
-[sub_resource type="Resource" id="Resource_vr2xw"]
-script = ExtResource("1_re23s")
+[sub_resource type="Resource" id="Resource_2aphv"]
+script = ExtResource("1_dy0hg")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -26,8 +26,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_yjqwa"]
-script = ExtResource("1_re23s")
+[sub_resource type="Resource" id="Resource_qprdy"]
+script = ExtResource("1_dy0hg")
 effect_type = 5
 target_mode_override = -1
 chance = 1.0
@@ -50,7 +50,7 @@ break_amount = 4.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_hvwu5")
+script = ExtResource("2_6j31c")
 id = &"wisp_basic"
 display_name = "Ember Lash"
 description = "A whip of flame."
@@ -60,7 +60,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 0
-effects = Array[ExtResource("1_re23s")]([SubResource("Resource_vr2xw"), SubResource("Resource_yjqwa")])
+effects = Array[ExtResource("1_dy0hg")]([SubResource("Resource_2aphv"), SubResource("Resource_qprdy")])
 color = Color(1, 0.42, 0.24, 1)
 show_projectile = false
 projectile_speed = 460.0

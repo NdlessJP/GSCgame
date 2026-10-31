@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_tvasr"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_pejyl"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_ya6og"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_sqcxo"]
 
-[sub_resource type="Resource" id="Resource_ac67q"]
-script = ExtResource("1_tvasr")
+[sub_resource type="Resource" id="Resource_j4ppm"]
+script = ExtResource("1_ya6og")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -26,8 +26,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_3rdq2"]
-script = ExtResource("1_tvasr")
+[sub_resource type="Resource" id="Resource_laghx"]
+script = ExtResource("1_ya6og")
 effect_type = 5
 target_mode_override = -1
 chance = 1.0
@@ -50,7 +50,7 @@ break_amount = 7.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_pejyl")
+script = ExtResource("2_sqcxo")
 id = &"bren_basic"
 display_name = "Quick Shot"
 description = "A fast, well placed arrow."
@@ -60,7 +60,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 0
-effects = Array[ExtResource("1_tvasr")]([SubResource("Resource_ac67q"), SubResource("Resource_3rdq2")])
+effects = Array[ExtResource("1_ya6og")]([SubResource("Resource_j4ppm"), SubResource("Resource_laghx")])
 color = Color(1, 0.42, 0.24, 1)
 show_projectile = true
 projectile_speed = 460.0

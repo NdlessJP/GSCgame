@@ -1,26 +1,26 @@
 [gd_resource type="Resource" script_class="QuestDef" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/quest_def.gd" id="1_rvyux"]
-[ext_resource type="Script" path="res://scripts/data/wave_def.gd" id="2_ug8u8"]
+[ext_resource type="Script" path="res://scripts/data/quest_def.gd" id="1_6vbac"]
+[ext_resource type="Script" path="res://scripts/data/wave_def.gd" id="2_41ieb"]
 
-[sub_resource type="Resource" id="Resource_5h3m8"]
-script = ExtResource("2_ug8u8")
+[sub_resource type="Resource" id="Resource_x3bss"]
+script = ExtResource("2_41ieb")
 label = "Wave 1"
 enemy_ids = Array[StringName]([&"marsh_slime", &"marsh_slime"])
 break_delay = 1.5
 enemy_level = 1
 stat_scale = 1.1
 
-[sub_resource type="Resource" id="Resource_4u2vh"]
-script = ExtResource("2_ug8u8")
+[sub_resource type="Resource" id="Resource_6ild1"]
+script = ExtResource("2_41ieb")
 label = "Wave 2"
 enemy_ids = Array[StringName]([&"marsh_slime", &"marsh_slime", &"night_shade"])
 break_delay = 1.5
 enemy_level = 2
 stat_scale = 1.1
 
-[sub_resource type="Resource" id="Resource_8m4s7"]
-script = ExtResource("2_ug8u8")
+[sub_resource type="Resource" id="Resource_r1yx7"]
+script = ExtResource("2_41ieb")
 label = "Wave 3"
 enemy_ids = Array[StringName]([&"night_shade", &"night_shade", &"marsh_slime", &"cinder_wisp"])
 break_delay = 1.5
@@ -28,13 +28,13 @@ enemy_level = 2
 stat_scale = 1.3
 
 [resource]
-script = ExtResource("1_rvyux")
+script = ExtResource("1_6vbac")
 id = &"quest_sunken_causeway"
 display_name = "Sunken Causeway"
 description = "The old road under the marsh floods every season. This time something came back with it."
 recommended_level = 3
 requires_quest = &"quest_cinder_road"
-waves = Array[ExtResource("2_ug8u8")]([SubResource("Resource_5h3m8"), SubResource("Resource_4u2vh"), SubResource("Resource_8m4s7")])
+waves = Array[ExtResource("2_41ieb")]([SubResource("Resource_x3bss"), SubResource("Resource_6ild1"), SubResource("Resource_r1yx7")])
 reward_xp = 190
 reward_currency = 90
 reward_items = Array[StringName]([&"resonance_bell"])

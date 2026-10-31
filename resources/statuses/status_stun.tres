@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="StatusDef" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_fdkyy"]
+[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_pa586"]
 
 [resource]
-script = ExtResource("1_fdkyy")
+script = ExtResource("1_pa586")
 id = &"status_stun"
 display_name = "Stunned"
 description = "Cannot act."

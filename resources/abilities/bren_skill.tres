@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_yc08j"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_8hmxg"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_1kbxu"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_hq5aj"]
 
-[sub_resource type="Resource" id="Resource_xewjs"]
-script = ExtResource("1_yc08j")
+[sub_resource type="Resource" id="Resource_861dn"]
+script = ExtResource("1_1kbxu")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -26,8 +26,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_tsnrt"]
-script = ExtResource("1_yc08j")
+[sub_resource type="Resource" id="Resource_m4d1j"]
+script = ExtResource("1_1kbxu")
 effect_type = 5
 target_mode_override = -1
 chance = 1.0
@@ -50,7 +50,7 @@ break_amount = 12.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_8hmxg")
+script = ExtResource("2_hq5aj")
 id = &"bren_skill"
 display_name = "Cinder Volley"
 description = "A burning volley of arrows."
@@ -60,7 +60,7 @@ arts_cost = 0.0
 arts_generated = 15.0
 windup = 0.0
 target_mode = 0
-effects = Array[ExtResource("1_yc08j")]([SubResource("Resource_xewjs"), SubResource("Resource_tsnrt")])
+effects = Array[ExtResource("1_1kbxu")]([SubResource("Resource_861dn"), SubResource("Resource_m4d1j")])
 color = Color(1, 0.42, 0.24, 1)
 show_projectile = true
 projectile_speed = 460.0

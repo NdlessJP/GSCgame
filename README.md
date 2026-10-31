@@ -228,8 +228,10 @@ burst of hits does not turn into noise.
 
 ### 6.2 Enemies
 
-`Cinder Wisp` (Fire), `Marsh Slime` (Water), `Stone Husk` (Earth), `Night Shade` (Dark)
-and the boss `Aurelith, the Ashen Warden` (Fire).
+`Cinder Wisp` (Fire), `Marsh Slime` (Water), `Stone Husk` (Earth), `Night Shade` (Dark),
+`Ashen Cantor` (Light — a support enemy that buffs the others, so it has to die first),
+`Rimewarden` (Water — a slow wall that shields itself) and the boss
+`Aurelith, the Ashen Warden` (Fire).
 
 Enemy AI picks a target by preference (`FOCUS`, `ROTATE` — the default spreads damage
 across the party — or `WEAKEST`) and only uses an ability when it is off cooldown.
@@ -241,13 +243,15 @@ across the party — or `WEAKEST`) and only uses an ability when it is off coold
 | Cinder Road | 1 | Wisp swarm, husk wall |
 | Sunken Causeway | 3 | Slimes and shades |
 | The Ashen Vault | 5 | Mixed waves, then **Aurelith** |
+| The Pale Gate | 7 | Cantor and rime wardens, the hardest waves |
 
-Quest 2 unlocks after quest 1 and quest 3 after quest 2. (The prototype keeps a
-`U` shortcut on the quest board that unlocks every quest for testing.)
+Every quest unlocks the next one. A new profile always starts with the entry
+quest (Cinder Road). (The prototype keeps a `U` shortcut on the quest board that
+unlocks every quest for testing.)
 
 ### 6.4 Equipment
 
-11 items in three categories — **Attack**, **Defense**, **Support** — each character has
+14 items in three categories — **Attack**, **Defense**, **Support** — each character has
 three slots (Offence / Guard / Auxiliary) that only accept the matching category.
 
 Every item has passive stat bonuses **and** an active ability with its own cooldown
@@ -354,13 +358,13 @@ The combat rules never read visual state, so replacing art cannot change balance
 
 ## 11. Tests
 
-`tests/test_runner.tscn` runs four suites — **261 checks, all passing**:
+`tests/test_runner.tscn` runs four suites — **278 checks, all passing**:
 
 | Suite | Checks | Covers |
 | --- | --- | --- |
-| `tests/test_combat.gd` | 117 | damage formula & mitigation, element table, crits, shields absorbing before HP, arts gauge spending and refusal, cooldown enforcement (rapid clicks cannot bypass it), status application/expiration/stat restoration, break start/end/reset, targeting and retargeting, dead units cannot act or be targeted, wave difficulty scaling, every synthesised sound contains real audio and rapid sounds are throttled |
-| `tests/test_progression.gd` | 82 | XP curve, stat growth, level-up, currency, item drops, equipment ownership (a copy cannot be equipped twice), slot/category compatibility, party slot rules (no duplicates, max 4), reward duplication guard, save round-trip (including the volume setting), corrupt-save recovery, quest unlock validation |
-| `tests/test_battle_flow.gd` | 25 | a full quest is played to victory by an auto-pilot (each quest is fought by a party at its recommended level), wave transitions leave no orphans, boss phase change happens exactly once, break triggers, ability wind-ups are telegraphed, pause freezes timers and HP, retry resets battle state, rewards are granted exactly once |
+| `tests/test_combat.gd` | 118 | damage formula & mitigation, element table, crits, shields absorbing before HP, arts gauge spending and refusal, cooldown enforcement (rapid clicks cannot bypass it), status application/expiration/stat restoration, break start/end/reset, targeting and retargeting, dead units cannot act or be targeted, wave difficulty scaling, every synthesised sound contains real audio and rapid sounds are throttled |
+| `tests/test_progression.gd` | 87 | XP curve, stat growth, level-up, currency, item drops, equipment ownership (a copy cannot be equipped twice), slot/category compatibility, party slot rules (no duplicates, max 4), reward duplication guard, save round-trip (including the volume setting), corrupt-save recovery, quest unlock validation |
+| `tests/test_battle_flow.gd` | 36 | three full quests are played to victory by an auto-pilot (each quest is fought by a party at its recommended level), wave transitions leave no orphans, boss phase change happens exactly once, break triggers, ability wind-ups are telegraphed, pause freezes timers and HP, retry resets battle state, rewards are granted exactly once |
 | `tests/test_ui.gd` | 37 | every screen instantiates, builds its widgets, covers the viewport and has clickable buttons; the controls overlay covers the whole viewport |
 
 Run them with:
@@ -376,7 +380,8 @@ and was used to verify the layout at **1280×720** and **1920×1080**.
 ## 12. Known limitations
 
 * Prototype scope: **no gacha, no monetisation, no multiplayer, no accounts, no
-  crafting, no large campaign.** Three quests and six heroes is the whole content set.
+  crafting, no large campaign.** Four quests, six heroes, seven enemies and
+  fourteen items is the whole content set.
 * Visuals are deliberately abstract placeholders (coloured shapes, labels, bars).
 * Enemy AI is intentionally simple (interval + cooldown based, no advanced positioning).
 * Sound effects are synthesised at runtime; there is **no music** and the sound design

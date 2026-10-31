@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="StatusDef" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_l1y0d"]
+[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_tyuar"]
 
 [resource]
-script = ExtResource("1_l1y0d")
+script = ExtResource("1_tyuar")
 id = &"status_bulwark"
 display_name = "Bulwark"
 description = "Defence greatly increased."

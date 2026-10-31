@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="EquipmentDef" load_steps=3 format=3]
 
-[ext_resource type="Resource" path="res://resources/abilities/eq_warding_veil.tres" id="1_3rny3"]
-[ext_resource type="Script" path="res://scripts/data/equipment_def.gd" id="2_5yujs"]
+[ext_resource type="Resource" path="res://resources/abilities/eq_warding_veil.tres" id="1_y3gns"]
+[ext_resource type="Script" path="res://scripts/data/equipment_def.gd" id="2_jeqmq"]
 
 [resource]
-script = ExtResource("2_5yujs")
+script = ExtResource("2_jeqmq")
 id = &"wardens_cloak"
 display_name = "Warden's Cloak"
 description = "Woven to turn aside arrows and worse."
@@ -18,5 +18,5 @@ attack_flat = 0.0
 defense_flat = 0.0
 max_hp_flat = 0.0
 arts_per_attack = 0.0
-active_ability = ExtResource("1_3rny3")
+active_ability = ExtResource("1_y3gns")
 icon_color = Color(0.55, 0.65, 0.85, 1)

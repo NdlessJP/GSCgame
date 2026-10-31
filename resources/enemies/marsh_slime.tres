@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="EnemyDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="1_ckyj6"]
-[ext_resource type="Resource" path="res://resources/abilities/slime_basic.tres" id="2_fm82n"]
-[ext_resource type="Resource" path="res://resources/abilities/slime_ability.tres" id="3_d1k8j"]
-[ext_resource type="Script" path="res://scripts/data/enemy_def.gd" id="4_stk8f"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="1_3mqat"]
+[ext_resource type="Resource" path="res://resources/abilities/slime_basic.tres" id="2_7qfgc"]
+[ext_resource type="Resource" path="res://resources/abilities/slime_ability.tres" id="3_qo1xi"]
+[ext_resource type="Script" path="res://scripts/data/enemy_def.gd" id="4_df5lu"]
 
 [resource]
-script = ExtResource("4_stk8f")
-attacks = Array[ExtResource("1_ckyj6")]([ExtResource("2_fm82n"), ExtResource("3_d1k8j")])
+script = ExtResource("4_df5lu")
+attacks = Array[ExtResource("1_3mqat")]([ExtResource("2_7qfgc"), ExtResource("3_qo1xi")])
 break_max = 90.0
 break_duration = 4.0
 is_boss = false
 phase_change_threshold = 0.5
-phase_two_attacks = Array[ExtResource("1_ckyj6")]([])
+phase_two_attacks = Array[ExtResource("1_3mqat")]([])
 target_preference = 3
 attack_start_delay = 0.9
 id = &"marsh_slime"

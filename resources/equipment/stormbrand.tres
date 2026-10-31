@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EquipmentDef" load_steps=3 format=3]
+
+[ext_resource type="Resource" path="res://resources/abilities/eq_thunderclap.tres" id="1_76gva"]
+[ext_resource type="Script" path="res://scripts/data/equipment_def.gd" id="2_p47i3"]
+
+[resource]
+script = ExtResource("2_p47i3")
+id = &"stormbrand"
+display_name = "Stormbrand"
+description = "The air around it never stays still."
+category = 0
+unique_item = true
+attack_percent = 0.0
+defense_percent = 0.0
+magic_percent = 0.22
+magic_defense_percent = 0.0
+attack_flat = 0.0
+defense_flat = 0.0
+max_hp_flat = 0.0
+arts_per_attack = 4.0
+active_ability = ExtResource("1_76gva")
+icon_color = Color(0.45, 0.8, 1, 1)

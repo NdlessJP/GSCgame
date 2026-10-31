@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="1_j7mgy"]
+[ext_resource type="Resource" path="res://resources/abilities/rime_basic.tres" id="2_ybxbo"]
+[ext_resource type="Resource" path="res://resources/abilities/rime_ability.tres" id="3_bmkqr"]
+[ext_resource type="Script" path="res://scripts/data/enemy_def.gd" id="4_6tmaq"]
+
+[resource]
+script = ExtResource("4_6tmaq")
+attacks = Array[ExtResource("1_j7mgy")]([ExtResource("2_ybxbo"), ExtResource("3_bmkqr")])
+break_max = 140.0
+break_duration = 4.5
+is_boss = false
+phase_change_threshold = 0.5
+phase_two_attacks = Array[ExtResource("1_j7mgy")]([])
+target_preference = 2
+attack_start_delay = 1.0
+id = &"rime_warden"
+display_name = "Rimewarden"
+element = 2
+role = "Warden"
+description = "Cold given a shape and a grudge."
+base_max_hp = 240.0
+base_attack = 24.0
+base_defense = 30.0
+base_magic = 10.0
+base_magic_defense = 26.0
+hp_growth = 14.0
+attack_growth = 2.6
+defense_growth = 1.7
+magic_growth = 2.1
+magic_defense_growth = 1.6
+body_color = Color(0.35, 0.62, 0.78, 1)
+accent_color = Color(0.8, 0.95, 1, 1)
+body_size = Vector2(46, 76)
+body_shape = 2

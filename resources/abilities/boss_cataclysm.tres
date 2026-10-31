@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_gki7l"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_a7r5b"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_67r88"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_umiou"]
 
-[sub_resource type="Resource" id="Resource_l04vd"]
-script = ExtResource("1_gki7l")
+[sub_resource type="Resource" id="Resource_2cbis"]
+script = ExtResource("1_67r88")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -26,8 +26,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_xaith"]
-script = ExtResource("1_gki7l")
+[sub_resource type="Resource" id="Resource_es0cn"]
+script = ExtResource("1_67r88")
 effect_type = 5
 target_mode_override = 1
 chance = 1.0
@@ -50,7 +50,7 @@ break_amount = 20.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_a7r5b")
+script = ExtResource("2_umiou")
 id = &"boss_cataclysm"
 display_name = "Cataclysm"
 description = "A burning sky that falls on the whole party."
@@ -60,7 +60,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 1.8
 target_mode = 1
-effects = Array[ExtResource("1_gki7l")]([SubResource("Resource_l04vd"), SubResource("Resource_xaith")])
+effects = Array[ExtResource("1_67r88")]([SubResource("Resource_2cbis"), SubResource("Resource_es0cn")])
 color = Color(1, 0.35, 0.15, 1)
 show_projectile = false
 projectile_speed = 460.0

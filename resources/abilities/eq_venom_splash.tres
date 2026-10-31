@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_gvd4q"]
-[ext_resource type="Resource" path="res://resources/statuses/status_venom.tres" id="2_8s48w"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_kry0u"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_j3tcp"]
+[ext_resource type="Resource" path="res://resources/statuses/status_venom.tres" id="2_wcjh8"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_u5yd3"]
 
-[sub_resource type="Resource" id="Resource_qgxcp"]
-script = ExtResource("1_gvd4q")
+[sub_resource type="Resource" id="Resource_nb5xj"]
+script = ExtResource("1_j3tcp")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -27,8 +27,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_kbs6b"]
-script = ExtResource("1_gvd4q")
+[sub_resource type="Resource" id="Resource_fis63"]
+script = ExtResource("1_j3tcp")
 effect_type = 3
 target_mode_override = -1
 chance = 1.0
@@ -48,11 +48,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_8s48w")
+status = ExtResource("2_wcjh8")
 duration_override = -1.0
 
 [resource]
-script = ExtResource("3_kry0u")
+script = ExtResource("3_u5yd3")
 id = &"eq_venom_splash"
 display_name = "Venom Splash"
 description = "A thrown flask of venom."
@@ -62,7 +62,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 0
-effects = Array[ExtResource("1_gvd4q")]([SubResource("Resource_qgxcp"), SubResource("Resource_kbs6b")])
+effects = Array[ExtResource("1_j3tcp")]([SubResource("Resource_nb5xj"), SubResource("Resource_fis63")])
 color = Color(0.45, 0.85, 0.35, 1)
 show_projectile = false
 projectile_speed = 460.0

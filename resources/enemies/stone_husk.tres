@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="EnemyDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="1_ikmcu"]
-[ext_resource type="Resource" path="res://resources/abilities/husk_basic.tres" id="2_u31e3"]
-[ext_resource type="Resource" path="res://resources/abilities/husk_ability.tres" id="3_6ggya"]
-[ext_resource type="Script" path="res://scripts/data/enemy_def.gd" id="4_4431w"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="1_fhbhh"]
+[ext_resource type="Resource" path="res://resources/abilities/husk_basic.tres" id="2_hycxv"]
+[ext_resource type="Resource" path="res://resources/abilities/husk_ability.tres" id="3_1ch0m"]
+[ext_resource type="Script" path="res://scripts/data/enemy_def.gd" id="4_opifb"]
 
 [resource]
-script = ExtResource("4_4431w")
-attacks = Array[ExtResource("1_ikmcu")]([ExtResource("2_u31e3"), ExtResource("3_6ggya")])
+script = ExtResource("4_opifb")
+attacks = Array[ExtResource("1_fhbhh")]([ExtResource("2_hycxv"), ExtResource("3_1ch0m")])
 break_max = 120.0
 break_duration = 4.5
 is_boss = false
 phase_change_threshold = 0.5
-phase_two_attacks = Array[ExtResource("1_ikmcu")]([])
+phase_two_attacks = Array[ExtResource("1_fhbhh")]([])
 target_preference = 3
 attack_start_delay = 1.1
 id = &"stone_husk"

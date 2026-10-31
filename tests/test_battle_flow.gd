@@ -22,6 +22,7 @@ static func run(host: Node) -> TestKit.Result:
 
 	await _run_quest(host, &"quest_cinder_road", result, false)
 	await _run_quest(host, &"quest_ashen_vault", result, true)
+	await _run_quest(host, &"quest_pale_gate", result, false)
 
 	for character_id: Variant in saved_levels.keys():
 		var entry: Dictionary = saved_levels[character_id]

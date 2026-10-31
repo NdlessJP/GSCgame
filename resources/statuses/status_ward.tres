@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="StatusDef" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_qyutx"]
+[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_ox5i7"]
 
 [resource]
-script = ExtResource("1_qyutx")
+script = ExtResource("1_ox5i7")
 id = &"status_ward"
 display_name = "Ward"
 description = "Absorbs incoming damage."

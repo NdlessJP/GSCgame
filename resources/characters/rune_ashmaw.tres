@@ -1,37 +1,37 @@
 [gd_resource type="Resource" script_class="CharacterDef" load_steps=10 format=3]
 
-[ext_resource type="Resource" path="res://resources/abilities/rune_arts.tres" id="1_ogt4r"]
-[ext_resource type="Resource" path="res://resources/abilities/rune_basic.tres" id="2_aeuht"]
-[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_ugjbr"]
-[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_q1frx"]
-[ext_resource type="Resource" path="res://resources/abilities/rune_skill.tres" id="5_qdxwe"]
-[ext_resource type="Resource" path="res://resources/abilities/rune_true.tres" id="6_jk77j"]
+[ext_resource type="Resource" path="res://resources/abilities/rune_arts.tres" id="1_47fiq"]
+[ext_resource type="Resource" path="res://resources/abilities/rune_basic.tres" id="2_xxnd6"]
+[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_rju0h"]
+[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_l2c1s"]
+[ext_resource type="Resource" path="res://resources/abilities/rune_skill.tres" id="5_d7y5x"]
+[ext_resource type="Resource" path="res://resources/abilities/rune_true.tres" id="6_u1jwl"]
 
-[sub_resource type="Resource" id="Resource_ce3oi"]
-script = ExtResource("3_ugjbr")
+[sub_resource type="Resource" id="Resource_vf7tk"]
+script = ExtResource("3_rju0h")
 id = &"offence"
 display_name = "Offence"
 allowed_categories = Array[int]([0, 2])
 
-[sub_resource type="Resource" id="Resource_7qlah"]
-script = ExtResource("3_ugjbr")
+[sub_resource type="Resource" id="Resource_byt1y"]
+script = ExtResource("3_rju0h")
 id = &"guard"
 display_name = "Guard"
 allowed_categories = Array[int]([1])
 
-[sub_resource type="Resource" id="Resource_ni1gw"]
-script = ExtResource("3_ugjbr")
+[sub_resource type="Resource" id="Resource_2kews"]
+script = ExtResource("3_rju0h")
 id = &"aux"
 display_name = "Auxiliary"
 allowed_categories = Array[int]([0, 2])
 
 [resource]
-script = ExtResource("4_q1frx")
-basic_attack = ExtResource("2_aeuht")
-skill = ExtResource("5_qdxwe")
-arts = ExtResource("1_ogt4r")
-true_arts = ExtResource("6_jk77j")
-equipment_slots = Array[ExtResource("3_ugjbr")]([SubResource("Resource_ce3oi"), SubResource("Resource_7qlah"), SubResource("Resource_ni1gw")])
+script = ExtResource("4_l2c1s")
+basic_attack = ExtResource("2_xxnd6")
+skill = ExtResource("5_d7y5x")
+arts = ExtResource("1_47fiq")
+true_arts = ExtResource("6_u1jwl")
+equipment_slots = Array[ExtResource("3_rju0h")]([SubResource("Resource_vf7tk"), SubResource("Resource_byt1y"), SubResource("Resource_2kews")])
 lore = "Nobody remembers her real name. They only remember the sound a guard makes when it gives up."
 roster_order = 4
 id = &"rune_ashmaw"

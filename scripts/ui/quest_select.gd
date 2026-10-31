@@ -129,7 +129,10 @@ func _build_quest_card(quest: QuestDef) -> Control:
 	spacer2.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	footer.add_child(spacer2)
 
-	var start: Button = UiStyle.make_button("Start Quest" if unlocked else "Locked", 14, 34)
+	var start_text: String = "Locked"
+	if unlocked:
+		start_text = "Replay Quest" if completed else "Start Quest"
+	var start: Button = UiStyle.make_button(start_text, 14, 34)
 	start.custom_minimum_size = Vector2(150, 34)
 	start.disabled = not unlocked
 	if unlocked:

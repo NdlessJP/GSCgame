@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_hiwyr"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_mb71j"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_oru70"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_j3ah1"]
 
-[sub_resource type="Resource" id="Resource_657el"]
-script = ExtResource("1_hiwyr")
+[sub_resource type="Resource" id="Resource_hhdox"]
+script = ExtResource("1_oru70")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -26,8 +26,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_c5u1u"]
-script = ExtResource("1_hiwyr")
+[sub_resource type="Resource" id="Resource_rrtc1"]
+script = ExtResource("1_oru70")
 effect_type = 5
 target_mode_override = -1
 chance = 1.0
@@ -50,7 +50,7 @@ break_amount = 10.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_mb71j")
+script = ExtResource("2_j3ah1")
 id = &"kael_skill"
 display_name = "Flame Cleave"
 description = "A heavy strike that chips the break meter."
@@ -60,7 +60,7 @@ arts_cost = 0.0
 arts_generated = 15.0
 windup = 0.0
 target_mode = 0
-effects = Array[ExtResource("1_hiwyr")]([SubResource("Resource_657el"), SubResource("Resource_c5u1u")])
+effects = Array[ExtResource("1_oru70")]([SubResource("Resource_hhdox"), SubResource("Resource_rrtc1")])
 color = Color(1, 0.42, 0.24, 1)
 show_projectile = false
 projectile_speed = 460.0

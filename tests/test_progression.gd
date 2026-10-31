@@ -9,6 +9,7 @@ static func run(database: GameDatabase) -> TestKit.Result:
 	_test_equipment_slots(database, result)
 	_test_reward_duplication(database, result)
 	_test_progression_curve(result)
+	_test_entry_quest(result)
 	_test_save_round_trip(result)
 	_test_corrupted_save(result)
 	_test_content_shape(database, result)
@@ -88,6 +89,26 @@ static func _test_progression_curve(result: TestKit.Result) -> void:
 	result.ok(int(partial["level"]) == 1, "Partial experience does not level a character up")
 	result.ok(int(partial["xp"]) == 10, "Partial experience is kept")
 	result.approx(Progression.level_progress(2, 0, balance), 0.0, "Level progress starts at zero")
+
+
+## A new profile has to start with the entry quest (the lowest level quest
+## that requires nothing), not with whichever quest sorts first by name.
+static func _test_entry_quest(result: TestKit.Result) -> void:
+	var database: GameDatabase = GameDatabase.load_all()
+	var entry: QuestDef = database.entry_quest()
+	result.ok(entry != null, "The database has an entry quest")
+	if entry == null:
+		return
+	result.ok(entry.requires_quest == &"", "The entry quest requires no other quest")
+	var lowest: int = entry.recommended_level
+	for quest_id: Variant in database.quest_ids():
+		var quest: QuestDef = database.quests[quest_id]
+		if quest.requires_quest == &"":
+			lowest = mini(lowest, quest.recommended_level)
+	result.ok(entry.recommended_level == lowest,
+		"The entry quest is the lowest level quest without a requirement")
+	result.ok(entry.id == &"quest_cinder_road",
+		"The entry quest is Cinder Road (got %s)" % entry.id)
 
 
 static func _test_save_round_trip(result: TestKit.Result) -> void:

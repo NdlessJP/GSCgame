@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="EquipmentDef" load_steps=3 format=3]
 
-[ext_resource type="Resource" path="res://resources/abilities/eq_warcry.tres" id="1_x73e1"]
-[ext_resource type="Script" path="res://scripts/data/equipment_def.gd" id="2_ks0ht"]
+[ext_resource type="Resource" path="res://resources/abilities/eq_warcry.tres" id="1_ypiwc"]
+[ext_resource type="Script" path="res://scripts/data/equipment_def.gd" id="2_hpei2"]
 
 [resource]
-script = ExtResource("2_ks0ht")
+script = ExtResource("2_hpei2")
 id = &"warpaint_tonic"
 display_name = "Warpaint Tonic"
 description = "Bitter. Effective."
@@ -18,5 +18,5 @@ attack_flat = 0.0
 defense_flat = 0.0
 max_hp_flat = 0.0
 arts_per_attack = 0.0
-active_ability = ExtResource("1_x73e1")
+active_ability = ExtResource("1_ypiwc")
 icon_color = Color(1, 0.6, 0.3, 1)

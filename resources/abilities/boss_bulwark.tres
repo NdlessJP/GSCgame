@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_ri465"]
-[ext_resource type="Resource" path="res://resources/statuses/status_bulwark.tres" id="2_e17jr"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_qxd1r"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_hln38"]
+[ext_resource type="Resource" path="res://resources/statuses/status_bulwark.tres" id="2_u0g35"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_lshi3"]
 
-[sub_resource type="Resource" id="Resource_n5ber"]
-script = ExtResource("1_ri465")
+[sub_resource type="Resource" id="Resource_sqh5a"]
+script = ExtResource("1_hln38")
 effect_type = 3
 target_mode_override = 5
 chance = 1.0
@@ -25,11 +25,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_e17jr")
+status = ExtResource("2_u0g35")
 duration_override = -1.0
 
-[sub_resource type="Resource" id="Resource_1r06w"]
-script = ExtResource("1_ri465")
+[sub_resource type="Resource" id="Resource_80txh"]
+script = ExtResource("1_hln38")
 effect_type = 2
 target_mode_override = 5
 chance = 1.0
@@ -52,7 +52,7 @@ break_amount = 0.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("3_qxd1r")
+script = ExtResource("3_lshi3")
 id = &"boss_bulwark"
 display_name = "Iron Bulwark"
 description = "Raises an iron guard."
@@ -62,7 +62,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.6
 target_mode = 5
-effects = Array[ExtResource("1_ri465")]([SubResource("Resource_n5ber"), SubResource("Resource_1r06w")])
+effects = Array[ExtResource("1_hln38")]([SubResource("Resource_sqh5a"), SubResource("Resource_80txh")])
 color = Color(0.75, 0.75, 0.8, 1)
 show_projectile = false
 projectile_speed = 460.0

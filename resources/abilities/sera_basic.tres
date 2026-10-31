@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_ja0v2"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_rau2v"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_3rpo5"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_p8qlp"]
 
-[sub_resource type="Resource" id="Resource_3xa6g"]
-script = ExtResource("1_ja0v2")
+[sub_resource type="Resource" id="Resource_bevh3"]
+script = ExtResource("1_3rpo5")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -26,8 +26,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_d3ddv"]
-script = ExtResource("1_ja0v2")
+[sub_resource type="Resource" id="Resource_k8p3r"]
+script = ExtResource("1_3rpo5")
 effect_type = 5
 target_mode_override = -1
 chance = 1.0
@@ -50,7 +50,7 @@ break_amount = 6.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_rau2v")
+script = ExtResource("2_p8qlp")
 id = &"sera_basic"
 display_name = "Staff Smite"
 description = "A measured strike of light."
@@ -60,7 +60,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 0
-effects = Array[ExtResource("1_ja0v2")]([SubResource("Resource_3xa6g"), SubResource("Resource_d3ddv")])
+effects = Array[ExtResource("1_3rpo5")]([SubResource("Resource_bevh3"), SubResource("Resource_k8p3r")])
 color = Color(1, 0.93, 0.66, 1)
 show_projectile = false
 projectile_speed = 460.0

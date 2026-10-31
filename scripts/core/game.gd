@@ -115,10 +115,10 @@ func _populate_new_profile() -> void:
 		for value: Variant in loadout:
 			list.append(String(value))
 		state.equipment[character_id] = list
-	# Only the first quest is unlocked; the others unlock by completion.
-	var quest_ids: Array = database.quest_ids()
-	if not quest_ids.is_empty():
-		state.quests_unlocked.append(StringName(String(quest_ids[0])))
+	# Only the entry quest is unlocked; the others unlock by completion.
+	var entry: QuestDef = database.entry_quest()
+	if entry != null:
+		state.quests_unlocked.append(entry.id)
 
 
 func save_game() -> bool:

@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=7 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_ynt0x"]
-[ext_resource type="Resource" path="res://resources/statuses/status_might.tres" id="2_u482o"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_5l6v2"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_ocf0r"]
+[ext_resource type="Resource" path="res://resources/statuses/status_might.tres" id="2_5jxav"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_brjs6"]
 
-[sub_resource type="Resource" id="Resource_dnrg7"]
-script = ExtResource("1_ynt0x")
+[sub_resource type="Resource" id="Resource_0lc1a"]
+script = ExtResource("1_ocf0r")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -27,8 +27,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_07tka"]
-script = ExtResource("1_ynt0x")
+[sub_resource type="Resource" id="Resource_xr32l"]
+script = ExtResource("1_ocf0r")
 effect_type = 5
 target_mode_override = -1
 chance = 1.0
@@ -50,8 +50,8 @@ arts_amount = 0.0
 break_amount = 30.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_520j5"]
-script = ExtResource("1_ynt0x")
+[sub_resource type="Resource" id="Resource_yuugq"]
+script = ExtResource("1_ocf0r")
 effect_type = 3
 target_mode_override = 5
 chance = 1.0
@@ -71,11 +71,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_u482o")
+status = ExtResource("2_5jxav")
 duration_override = -1.0
 
 [resource]
-script = ExtResource("3_5l6v2")
+script = ExtResource("3_brjs6")
 id = &"bren_true"
 display_name = "Phoenix Fall"
 description = "One burning arrow, and the hunter burns brighter."
@@ -85,7 +85,7 @@ arts_cost = 200.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 0
-effects = Array[ExtResource("1_ynt0x")]([SubResource("Resource_dnrg7"), SubResource("Resource_07tka"), SubResource("Resource_520j5")])
+effects = Array[ExtResource("1_ocf0r")]([SubResource("Resource_0lc1a"), SubResource("Resource_xr32l"), SubResource("Resource_yuugq")])
 color = Color(1, 0.42, 0.24, 1)
 show_projectile = true
 projectile_speed = 460.0
