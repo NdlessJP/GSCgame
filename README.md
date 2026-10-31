@@ -35,10 +35,45 @@ Download Godot 4.3+ from <https://godotengine.org/download> (the standard build 
 # Headless smoke test (starts the game, no window)
 godot --headless --path .
 
-# Run the automated test suite (165 checks)
+# Run the automated test suite (278 checks)
 godot --headless --path . --import          # refresh the class cache first
 godot --headless --path . res://tests/test_runner.tscn
 ```
+
+**As a browser game (optional)**
+
+The project exports to HTML5, so it can be played in a browser without any
+native install:
+
+```bash
+# 1. install the Godot 4.3 export templates once
+#    (https://github.com/godotengine/godot/releases/tag/4.3-stable,
+#     "Godot_v4.3-stable_export_templates.tpz" -> unzip into
+#     ~/.local/share/godot/export_templates/4.3.stable/)
+
+# 2. export
+godot --headless --path . --export-release "Web" build/web/index.html
+
+# 3. serve it (a plain file server works, but the one below also sets the
+#    correct .wasm mime type)
+python3 tools/serve_web.py 8080 build/web
+#    -> open http://localhost:8080
+```
+
+`export_presets.cfg` holds the "Web" preset.  A browser smoke test
+(`tools/browser_test.js`) loads the exported build in headless Chromium, fails
+on any console error and plays through the menus into a battle:
+
+```bash
+bash tools/setup_browser_test.sh          # once: installs Playwright + .gdignore
+node tools/browser_test.js http://127.0.0.1:8080
+```
+
+> If you install Node modules inside the project, add a `.gdignore` file to
+> that folder.  The Godot editor imports everything under the project root and
+> some Node assets are enormous (the Playwright dashboard ships a
+> 51500x51500 pixel SVG that will run the editor out of memory).
+> `tools/setup_browser_test.sh` does this for you.
 
 The project must be re-imported (`--import`) after adding a new `class_name` script so
 Godot's global class cache picks it up.
@@ -376,6 +411,12 @@ godot --headless --path . res://tests/test_runner.tscn
 
 `tools/screenshot_tour.gd` (dev-only) renders every screen to `user://screenshots/`
 and was used to verify the layout at **1280×720** and **1920×1080**.
+
+The browser smoke test (`tools/browser_test.js`) additionally verifies the
+**exported** build, which is what caught the exported-build content bug: in an
+exported game the text resources are replaced by binary `.res` files plus a
+`.tres.remap` stub, so a content loader that only accepts `.tres` finds
+nothing and the game starts with an empty database.
 
 ## 12. Known limitations
 

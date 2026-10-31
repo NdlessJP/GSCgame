@@ -50,20 +50,38 @@ func _load_directory(path: String, kind: String, target: Dictionary) -> void:
 	dir.list_dir_begin()
 	var file_name: String = dir.get_next()
 	while file_name != "":
-		if not dir.current_is_dir() and file_name.get_extension() == "tres":
-			var full: String = path + "/" + file_name
-			var res: Resource = load(full)
-			if res == null:
-				load_issues.append("Could not load %s (%s)" % [full, kind])
-			elif res.get("id") == null or String(res.get("id")) == "":
-				load_issues.append("%s has no id" % full)
-			else:
-				var id: StringName = StringName(String(res.get("id")))
-				if target.has(id):
-					load_issues.append("Duplicate %s id '%s' in %s" % [kind, id, file_name])
-				target[id] = res
+		if not dir.current_is_dir():
+			var full: String = _resource_path(path, file_name)
+			if full != "":
+				var res: Resource = load(full)
+				if res == null:
+					load_issues.append("Could not load %s (%s)" % [full, kind])
+				elif res.get("id") == null or String(res.get("id")) == "":
+					load_issues.append("%s has no id" % full)
+				else:
+					var id: StringName = StringName(String(res.get("id")))
+					if target.has(id):
+						load_issues.append("Duplicate %s id '%s' in %s" % [kind, id, file_name])
+					target[id] = res
 		file_name = dir.get_next()
 	dir.list_dir_end()
+
+
+## Builds the loadable path of a content file.
+##
+## In an exported build the text resources are converted to binary and only a
+## `<name>.tres.remap` stub is stored next to them, so the extension filter has
+## to accept both forms.  The `.remap` suffix is dropped before loading, which
+## lets the resource loader follow the remap to the real file.
+static func _resource_path(directory: String, file_name: String) -> String:
+	var lower: String = file_name.to_lower()
+	var full: String = directory + "/" + file_name
+	if lower.ends_with(".remap"):
+		full = full.substr(0, full.length() - len(".remap"))
+		lower = lower.substr(0, lower.length() - len(".remap"))
+	if not lower.ends_with(".tres"):
+		return ""
+	return full
 
 
 func _validate_references() -> void:

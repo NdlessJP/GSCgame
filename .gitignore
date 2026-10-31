@@ -2,7 +2,6 @@
 .godot/
 .import/
 export.cfg
-export_presets.cfg
 *.translation
 
 # Local engine binaries (download the matching Godot build instead)
@@ -28,3 +27,10 @@ id_ed25519*
 
 # Sandbox/apt artifacts
 .sudo_as_admin_successful
+
+# Node tooling used by the browser test (not part of the game)
+tools/node_modules/
+tools/package.json
+tools/package-lock.json
+build/
+.npm/
