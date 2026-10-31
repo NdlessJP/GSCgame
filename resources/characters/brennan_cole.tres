@@ -1,37 +1,37 @@
 [gd_resource type="Resource" script_class="CharacterDef" load_steps=10 format=3]
 
-[ext_resource type="Resource" path="res://resources/abilities/bren_arts.tres" id="1_2ck0j"]
-[ext_resource type="Resource" path="res://resources/abilities/bren_basic.tres" id="2_8m246"]
-[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_icu7f"]
-[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_1hen4"]
-[ext_resource type="Resource" path="res://resources/abilities/bren_skill.tres" id="5_birlo"]
-[ext_resource type="Resource" path="res://resources/abilities/bren_true.tres" id="6_711hg"]
+[ext_resource type="Resource" path="res://resources/abilities/bren_arts.tres" id="1_sqchm"]
+[ext_resource type="Resource" path="res://resources/abilities/bren_basic.tres" id="2_kdhaw"]
+[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_tamfk"]
+[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_1egmb"]
+[ext_resource type="Resource" path="res://resources/abilities/bren_skill.tres" id="5_1sh8b"]
+[ext_resource type="Resource" path="res://resources/abilities/bren_true.tres" id="6_days3"]
 
-[sub_resource type="Resource" id="Resource_unw6a"]
-script = ExtResource("3_icu7f")
+[sub_resource type="Resource" id="Resource_lkn52"]
+script = ExtResource("3_tamfk")
 id = &"offence"
 display_name = "Offence"
 allowed_categories = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_hxbcy"]
-script = ExtResource("3_icu7f")
+[sub_resource type="Resource" id="Resource_evhxv"]
+script = ExtResource("3_tamfk")
 id = &"guard"
 display_name = "Guard"
 allowed_categories = Array[int]([1])
 
-[sub_resource type="Resource" id="Resource_6v3py"]
-script = ExtResource("3_icu7f")
+[sub_resource type="Resource" id="Resource_q5ngi"]
+script = ExtResource("3_tamfk")
 id = &"aux"
 display_name = "Auxiliary"
 allowed_categories = Array[int]([2])
 
 [resource]
-script = ExtResource("4_1hen4")
-basic_attack = ExtResource("2_8m246")
-skill = ExtResource("5_birlo")
-arts = ExtResource("1_2ck0j")
-true_arts = ExtResource("6_711hg")
-equipment_slots = Array[ExtResource("3_icu7f")]([SubResource("Resource_unw6a"), SubResource("Resource_hxbcy"), SubResource("Resource_6v3py")])
+script = ExtResource("4_1egmb")
+basic_attack = ExtResource("2_kdhaw")
+skill = ExtResource("5_1sh8b")
+arts = ExtResource("1_sqchm")
+true_arts = ExtResource("6_days3")
+equipment_slots = Array[ExtResource("3_tamfk")]([SubResource("Resource_lkn52"), SubResource("Resource_evhxv"), SubResource("Resource_q5ngi")])
 lore = "He range the burning roads before the Ember Watch did, and he still runs ahead of trouble."
 roster_order = 5
 id = &"brennan_cole"

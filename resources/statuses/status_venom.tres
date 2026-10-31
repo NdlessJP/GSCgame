@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="StatusDef" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_6oo07"]
+[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_5opff"]
 
 [resource]
-script = ExtResource("1_6oo07")
+script = ExtResource("1_5opff")
 id = &"status_venom"
 display_name = "Venom"
 description = "Poison damage over time."

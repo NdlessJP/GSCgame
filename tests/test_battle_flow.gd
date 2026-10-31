@@ -15,7 +15,6 @@ static func run(host: Node) -> TestKit.Result:
 	var saved_levels: Dictionary = {}
 	for character_id: Variant in Game.state.characters.keys():
 		saved_levels[character_id] = Game.state.characters[character_id]
-		Game.state.set_character_progress(StringName(String(character_id)), 1, 0)
 	# A fixed party keeps the check deterministic: damage, healing, tanking
 	# and break damage are all represented.
 	var saved_party: Array[StringName] = Game.state.party.duplicate()
@@ -32,6 +31,12 @@ static func run(host: Node) -> TestKit.Result:
 	return result
 
 
+## Sets every known character to the given level.
+static func _set_party_level(level: int) -> void:
+	for character_id: Variant in Game.state.characters.keys():
+		Game.state.set_character_progress(StringName(String(character_id)), maxi(level, 1), 0)
+
+
 ## Fights one quest with the auto-pilot and checks the flow.
 static func _run_quest(host: Node, quest_id: StringName, result: TestKit.Result, expect_boss: bool) -> void:
 	var quest: QuestDef = Game.database.quest(quest_id)
@@ -45,11 +50,21 @@ static func _run_quest(host: Node, quest_id: StringName, result: TestKit.Result,
 	var waves_started: Array[int] = []
 	var phase_changes: Array[int] = []
 	var break_events: Array[int] = []
+	var windup_events: Array[int] = []
+	var windup_durations: Array[float] = []
 	controller.wave_started.connect(func(index: int, _count: int) -> void: waves_started.append(index))
 	controller.break_started.connect(func(_unit: UnitState) -> void: break_events.append(1))
+	controller.ability_windup.connect(func(_caster: UnitState, ability: AbilityDef, duration: float) -> void:
+		windup_events.append(1)
+		windup_durations.append(duration))
 	controller.ability_used.connect(func(_caster: UnitState, ability: AbilityDef, _targets: Array) -> void:
 		if ability.id == &"boss_phase":
 			phase_changes.append(1))
+
+	# Each quest is fought by a party at its recommended level, which is what
+	# the quest board promises the player.  Quest 1 is fought at level 1, the
+	# boss quest at its recommended level.
+	_set_party_level(quest.recommended_level)
 
 	var previous_scale: float = Engine.time_scale
 	Engine.time_scale = 6.0
@@ -67,6 +82,13 @@ static func _run_quest(host: Node, quest_id: StringName, result: TestKit.Result,
 		"The party clears '%s' (state was %s after %d frames)" % [quest.display_name, controller.state_name(), frames])
 	result.ok(waves_started.size() == 3, "'%s' fights all three waves" % quest.display_name)
 	result.ok(controller.pending.is_empty(), "'%s' leaves no pending actions" % quest.display_name)
+	result.ok(windup_events.size() > 0,
+		"'%s' shows at least one ability wind-up telegraph (%d)" % [quest.display_name, windup_events.size()])
+	var all_telegraphed: bool = true
+	for duration: float in windup_durations:
+		if duration <= 0.0:
+			all_telegraphed = false
+	result.ok(all_telegraphed, "'%s' telegraphs every wind-up with a duration" % quest.display_name)
 	result.ok(controller.living_allies().size() > 0, "'%s' ends with heroes standing" % quest.display_name)
 
 	if expect_boss:

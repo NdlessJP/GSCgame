@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_0e5vc"]
-[ext_resource type="Resource" path="res://resources/statuses/status_sundered.tres" id="2_lnof3"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_c4apr"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_4ljoa"]
+[ext_resource type="Resource" path="res://resources/statuses/status_sundered.tres" id="2_ykm6d"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_mcpgh"]
 
-[sub_resource type="Resource" id="Resource_25iup"]
-script = ExtResource("1_0e5vc")
+[sub_resource type="Resource" id="Resource_umgtn"]
+script = ExtResource("1_4ljoa")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -27,8 +27,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_ebr22"]
-script = ExtResource("1_0e5vc")
+[sub_resource type="Resource" id="Resource_6mbfv"]
+script = ExtResource("1_4ljoa")
 effect_type = 3
 target_mode_override = -1
 chance = 0.5
@@ -48,11 +48,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_lnof3")
+status = ExtResource("2_ykm6d")
 duration_override = -1.0
 
 [resource]
-script = ExtResource("3_c4apr")
+script = ExtResource("3_mcpgh")
 id = &"slime_ability"
 display_name = "Tidal Slap"
 description = "A crushing wave of water."
@@ -62,7 +62,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.7
 target_mode = 0
-effects = Array[ExtResource("1_0e5vc")]([SubResource("Resource_25iup"), SubResource("Resource_ebr22")])
+effects = Array[ExtResource("1_4ljoa")]([SubResource("Resource_umgtn"), SubResource("Resource_6mbfv")])
 color = Color(0.31, 0.62, 1, 1)
 show_projectile = false
 projectile_speed = 460.0

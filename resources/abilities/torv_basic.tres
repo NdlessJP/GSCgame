@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_5tn7p"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_d1haf"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_s1rdp"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_1ughv"]
 
-[sub_resource type="Resource" id="Resource_xdd80"]
-script = ExtResource("1_5tn7p")
+[sub_resource type="Resource" id="Resource_1pqya"]
+script = ExtResource("1_s1rdp")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -26,8 +26,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_oisvf"]
-script = ExtResource("1_5tn7p")
+[sub_resource type="Resource" id="Resource_vper1"]
+script = ExtResource("1_s1rdp")
 effect_type = 5
 target_mode_override = -1
 chance = 1.0
@@ -50,7 +50,7 @@ break_amount = 13.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_d1haf")
+script = ExtResource("2_1ughv")
 id = &"torv_basic"
 display_name = "Shield Bash"
 description = "A heavy bash that stresses the guard."
@@ -60,7 +60,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 0
-effects = Array[ExtResource("1_5tn7p")]([SubResource("Resource_xdd80"), SubResource("Resource_oisvf")])
+effects = Array[ExtResource("1_s1rdp")]([SubResource("Resource_1pqya"), SubResource("Resource_vper1")])
 color = Color(0.72, 0.52, 0.28, 1)
 show_projectile = false
 projectile_speed = 460.0

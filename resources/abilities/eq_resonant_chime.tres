@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_xqhj7"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_43g0x"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_jekxe"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_wjx5e"]
 
-[sub_resource type="Resource" id="Resource_4nq73"]
-script = ExtResource("1_xqhj7")
+[sub_resource type="Resource" id="Resource_m4yiq"]
+script = ExtResource("1_jekxe")
 effect_type = 4
 target_mode_override = 3
 chance = 1.0
@@ -27,7 +27,7 @@ break_amount = 0.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_43g0x")
+script = ExtResource("2_wjx5e")
 id = &"eq_resonant_chime"
 display_name = "Resonant Chime"
 description = "A chime that refills the party's focus."
@@ -37,7 +37,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 3
-effects = Array[ExtResource("1_xqhj7")]([SubResource("Resource_4nq73")])
+effects = Array[ExtResource("1_jekxe")]([SubResource("Resource_m4yiq")])
 color = Color(0.5, 0.85, 1, 1)
 show_projectile = false
 projectile_speed = 460.0

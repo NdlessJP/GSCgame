@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="StatusDef" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_38dld"]
+[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_fdxbu"]
 
 [resource]
-script = ExtResource("1_38dld")
+script = ExtResource("1_fdxbu")
 id = &"status_renewal"
 display_name = "Renewal"
 description = "Restores health over time."

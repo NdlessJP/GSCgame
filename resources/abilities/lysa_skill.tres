@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_t12xd"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_fwmly"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_oxslx"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_svht8"]
 
-[sub_resource type="Resource" id="Resource_516yc"]
-script = ExtResource("1_t12xd")
+[sub_resource type="Resource" id="Resource_e1oc0"]
+script = ExtResource("1_oxslx")
 effect_type = 4
 target_mode_override = 3
 chance = 1.0
@@ -26,8 +26,8 @@ arts_amount = 45.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_s28sv"]
-script = ExtResource("1_t12xd")
+[sub_resource type="Resource" id="Resource_nqiy3"]
+script = ExtResource("1_oxslx")
 effect_type = 4
 target_mode_override = 5
 chance = 1.0
@@ -50,7 +50,7 @@ break_amount = 0.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_fwmly")
+script = ExtResource("2_svht8")
 id = &"lysa_skill"
 display_name = "Tidal Gift"
 description = "Shares her focus with the whole party."
@@ -60,7 +60,7 @@ arts_cost = 0.0
 arts_generated = 15.0
 windup = 0.0
 target_mode = 3
-effects = Array[ExtResource("1_t12xd")]([SubResource("Resource_516yc"), SubResource("Resource_s28sv")])
+effects = Array[ExtResource("1_oxslx")]([SubResource("Resource_e1oc0"), SubResource("Resource_nqiy3")])
 color = Color(0.31, 0.62, 1, 1)
 show_projectile = false
 projectile_speed = 460.0

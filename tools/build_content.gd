@@ -917,11 +917,15 @@ func _build_equipment() -> void:
 # Quests
 # --------------------------------------------------------------------------
 
-func _wave(label: String, enemies: Array[StringName], delay: float = 1.5) -> WaveDef:
+## Builds one wave.  `level` and `scale` drive the difficulty ramp: later
+## waves of a quest spawn tougher versions of the same enemies.
+func _wave(label: String, enemies: Array[StringName], delay: float = 1.5, level: int = 1, scale: float = 1.0) -> WaveDef:
 	var wave: WaveDef = WaveDef.new()
 	wave.label = label
 	wave.enemy_ids = enemies
 	wave.break_delay = delay
+	wave.enemy_level = level
+	wave.stat_scale = scale
 	return wave
 
 
@@ -935,9 +939,9 @@ func _build_quests() -> void:
 	q1.reward_currency = 60
 	q1.reward_items = [&"bulwark_plate"]
 	q1.waves = [
-		_wave("Wave 1", [&"cinder_wisp", &"cinder_wisp"]),
-		_wave("Wave 2", [&"cinder_wisp", &"cinder_wisp", &"stone_husk"]),
-		_wave("Wave 3", [&"stone_husk", &"stone_husk", &"stone_husk", &"cinder_wisp"]),
+		_wave("Wave 1", [&"cinder_wisp", &"cinder_wisp"], 1.5, 1, 1.0),
+		_wave("Wave 2", [&"cinder_wisp", &"cinder_wisp", &"stone_husk"], 1.5, 1, 1.15),
+		_wave("Wave 3", [&"stone_husk", &"stone_husk", &"stone_husk", &"cinder_wisp"], 1.5, 2, 1.25),
 	]
 	_save(q1, "quests", "quest_cinder_road.tres")
 
@@ -951,9 +955,9 @@ func _build_quests() -> void:
 	q2.reward_currency = 90
 	q2.reward_items = [&"resonance_bell"]
 	q2.waves = [
-		_wave("Wave 1", [&"marsh_slime", &"marsh_slime"]),
-		_wave("Wave 2", [&"marsh_slime", &"marsh_slime", &"night_shade"]),
-		_wave("Wave 3", [&"night_shade", &"night_shade", &"marsh_slime", &"cinder_wisp"]),
+		_wave("Wave 1", [&"marsh_slime", &"marsh_slime"], 1.5, 1, 1.1),
+		_wave("Wave 2", [&"marsh_slime", &"marsh_slime", &"night_shade"], 1.5, 2, 1.1),
+		_wave("Wave 3", [&"night_shade", &"night_shade", &"marsh_slime", &"cinder_wisp"], 1.5, 2, 1.3),
 	]
 	_save(q2, "quests", "quest_sunken_causeway.tres")
 
@@ -967,9 +971,9 @@ func _build_quests() -> void:
 	q3.reward_currency = 180
 	q3.reward_items = [&"stormcaller_rod", &"venom_flask"]
 	q3.waves = [
-		_wave("Wave 1", [&"stone_husk", &"stone_husk", &"night_shade"]),
-		_wave("Wave 2", [&"marsh_slime", &"marsh_slime", &"cinder_wisp", &"cinder_wisp"]),
-		_wave("Wave 3", [&"aurelith_warden", &"cinder_wisp"], 2.5),
+		_wave("Wave 1", [&"stone_husk", &"stone_husk", &"night_shade"], 1.5, 2, 1.15),
+		_wave("Wave 2", [&"marsh_slime", &"marsh_slime", &"cinder_wisp", &"cinder_wisp"], 1.5, 2, 1.3),
+		_wave("Wave 3", [&"aurelith_warden", &"cinder_wisp"], 2.5, 3, 1.35),
 	]
 	_save(q3, "quests", "quest_ashen_vault.tres")
 

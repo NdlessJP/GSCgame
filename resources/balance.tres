@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="BalanceConfig" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/core/balance_config.gd" id="1_jcerd"]
+[ext_resource type="Script" path="res://scripts/core/balance_config.gd" id="1_84x84"]
 
 [resource]
-script = ExtResource("1_jcerd")
+script = ExtResource("1_84x84")
 defense_constant = 100.0
 critical_rate = 0.08
 critical_multiplier = 1.6

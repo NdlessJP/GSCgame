@@ -76,6 +76,7 @@ shortcuts for fast play.
 | True Arts of party member 1–4 | *True 200* button | `Z` `X` `C` `V` |
 | Equipment actives of party member 1 | The three equipment buttons of member 1 | `1` `2` `3` |
 | Pause | *Pause* button | `P` or `Esc` |
+| Battle speed | *1x / 2x / 3x* button in the top bar | — |
 | Resume / retry / quit | Pause menu buttons | — |
 
 ## 5. Combat rules
@@ -165,13 +166,29 @@ leaks past its duration (covered by an automated test).
 ### 5.8 Waves
 
 * A quest is a list of waves; every wave spawns a set of enemies from `WaveDef`.
+* **Every wave carries its own difficulty ramp.** `WaveDef.enemy_level` raises the level
+  the enemies are spawned at and `WaveDef.stat_scale` multiplies their stats, so a quest
+  gets harder from wave to wave even when it reuses the same enemies. The scaling lives
+  in the runtime state (`UnitState.stat_multiplier`), never in the shared enemy
+  definition, so no resource is ever mutated.
 * Between waves the controller **cleans up** dead enemies, projectiles and pending
   actions.
 * **Party HP and the Arts gauge carry over between waves.**
 * **Character and equipment cooldowns also carry over** (they are per-battle timers and
   are not reset by a wave change); combat timers and pending actions are reset.
 
-### 5.9 Boss
+### 5.9 Reading the battlefield
+
+* The top bar shows the quest, the current wave, the battle state, the **current
+  preferred target** and a **battle speed toggle** (1x / 2x / 3x). The speed only
+  multiplies the battle clock, so nothing else in the game is affected.
+* Every party member's panel shows the **name of the ability** on the button, with its
+  cost or remaining cooldown underneath, and a tooltip with the full description.
+* Abilities with a wind-up draw a **pulsing telegraph ring** around the caster and
+  print a warning, so a party wide attack can be dodged or interrupted.
+* The boss has a dedicated panel with its HP bar **and** its break meter.
+
+### 5.10 Boss
 
 `Aurelith, the Ashen Warden` (Fire) has:
 
@@ -184,6 +201,14 @@ leaks past its duration (covered by an automated test).
   so a well-timed burst can break it).
 
 The phase change can only trigger once per battle — verified by an automated test.
+
+### 5.11 Sound
+
+The project ships **without imported audio**. Every sound effect is synthesised at
+start-up into an `AudioStreamWAV` by `scripts/ui/audio_director.gd` (the `Audio`
+autoload): hits, critical hits, breaks, healing, shields, the boss warning, wave
+changes and the victory / defeat stingers. Rapid identical sounds are throttled so a
+burst of hits does not turn into noise.
 
 ## 6. Content
 
@@ -247,6 +272,7 @@ project.godot            # main scene, autoload `Game`, 1280x720 GL Compatibilit
 scenes/                  # main_menu, party, quests, battle, results
 scripts/
   core/                  # elements, balance_config, game_database, game_state, game (autoload)
+  ui/audio_director.gd   # procedural sound effects (autoload `Audio`)
   data/                  # Resource definitions (AbilityDef, StatusDef, CharacterDef, ...)
   units/                 # runtime state: UnitState, StatusInstance, Unit view
   battle/                # battle_controller (state machine), damage_calculator,
@@ -324,13 +350,13 @@ The combat rules never read visual state, so replacing art cannot change balance
 
 ## 11. Tests
 
-`tests/test_runner.tscn` runs three suites — **165 checks, all passing**:
+`tests/test_runner.tscn` runs three suites — **223 checks, all passing**:
 
 | Suite | Checks | Covers |
 | --- | --- | --- |
-| `tests/test_combat.gd` | 63 | damage formula & mitigation, element table, crits, shields absorbing before HP, arts gauge spending and refusal, cooldown enforcement (rapid clicks cannot bypass it), status application/expiration/stat restoration, break start/end/reset, targeting and retargeting, dead units cannot act or be targeted |
+| `tests/test_combat.gd` | 117 | damage formula & mitigation, element table, crits, shields absorbing before HP, arts gauge spending and refusal, cooldown enforcement (rapid clicks cannot bypass it), status application/expiration/stat restoration, break start/end/reset, targeting and retargeting, dead units cannot act or be targeted, wave difficulty scaling, every synthesised sound contains real audio and rapid sounds are throttled |
 | `tests/test_progression.gd` | 81 | XP curve, stat growth, level-up, currency, item drops, equipment ownership (a copy cannot be equipped twice), slot/category compatibility, party slot rules (no duplicates, max 4), reward duplication guard, save round-trip, corrupt-save recovery, quest unlock validation |
-| `tests/test_battle_flow.gd` | 21 | a full quest is played to victory by an auto-pilot, wave transitions leave no orphans, boss phase change happens exactly once, break triggers, pause freezes timers and HP, retry resets battle state, rewards are granted exactly once |
+| `tests/test_battle_flow.gd` | 25 | a full quest is played to victory by an auto-pilot (each quest is fought by a party at its recommended level), wave transitions leave no orphans, boss phase change happens exactly once, break triggers, ability wind-ups are telegraphed, pause freezes timers and HP, retry resets battle state, rewards are granted exactly once |
 
 Run them with:
 
@@ -348,7 +374,8 @@ and was used to verify the layout at **1280×720** and **1920×1080**.
   crafting, no large campaign.** Three quests and six heroes is the whole content set.
 * Visuals are deliberately abstract placeholders (coloured shapes, labels, bars).
 * Enemy AI is intentionally simple (interval + cooldown based, no advanced positioning).
-* There is no audio: no music, no sound effects.
+* Sound effects are synthesised at runtime; there is **no music** and the sound design
+  is placeholder-level.
 * Balance is tuned for a level-1 party and has not been play-tested by humans at length;
   the numbers live in `tools/build_content.gd` and `scripts/core/balance_config.gd` and
   are cheap to adjust.

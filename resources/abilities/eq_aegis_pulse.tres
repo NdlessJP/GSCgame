@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_n3aav"]
-[ext_resource type="Resource" path="res://resources/statuses/status_renewal.tres" id="2_86t4g"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_eaye2"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_f6huw"]
+[ext_resource type="Resource" path="res://resources/statuses/status_renewal.tres" id="2_vlyj5"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_2uhf0"]
 
-[sub_resource type="Resource" id="Resource_co7wh"]
-script = ExtResource("1_n3aav")
+[sub_resource type="Resource" id="Resource_bv7aw"]
+script = ExtResource("1_f6huw")
 effect_type = 2
 target_mode_override = 5
 chance = 1.0
@@ -27,8 +27,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_day5g"]
-script = ExtResource("1_n3aav")
+[sub_resource type="Resource" id="Resource_mcfc4"]
+script = ExtResource("1_f6huw")
 effect_type = 3
 target_mode_override = 5
 chance = 1.0
@@ -48,11 +48,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_86t4g")
+status = ExtResource("2_vlyj5")
 duration_override = -1.0
 
 [resource]
-script = ExtResource("3_eaye2")
+script = ExtResource("3_2uhf0")
 id = &"eq_aegis_pulse"
 display_name = "Aegis Pulse"
 description = "A pulse of protection and renewal."
@@ -62,7 +62,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 5
-effects = Array[ExtResource("1_n3aav")]([SubResource("Resource_co7wh"), SubResource("Resource_day5g")])
+effects = Array[ExtResource("1_f6huw")]([SubResource("Resource_bv7aw"), SubResource("Resource_mcfc4")])
 color = Color(0.6, 0.9, 0.75, 1)
 show_projectile = false
 projectile_speed = 460.0

@@ -1,37 +1,37 @@
 [gd_resource type="Resource" script_class="CharacterDef" load_steps=10 format=3]
 
-[ext_resource type="Resource" path="res://resources/abilities/kael_arts.tres" id="1_lr48m"]
-[ext_resource type="Resource" path="res://resources/abilities/kael_basic.tres" id="2_r7jo2"]
-[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_6u7bd"]
-[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_8a4ma"]
-[ext_resource type="Resource" path="res://resources/abilities/kael_skill.tres" id="5_aheqk"]
-[ext_resource type="Resource" path="res://resources/abilities/kael_true.tres" id="6_rc3hm"]
+[ext_resource type="Resource" path="res://resources/abilities/kael_arts.tres" id="1_v1skq"]
+[ext_resource type="Resource" path="res://resources/abilities/kael_basic.tres" id="2_kdf17"]
+[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_myfhi"]
+[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_u74kn"]
+[ext_resource type="Resource" path="res://resources/abilities/kael_skill.tres" id="5_0v0aa"]
+[ext_resource type="Resource" path="res://resources/abilities/kael_true.tres" id="6_3tpkr"]
 
-[sub_resource type="Resource" id="Resource_r3jl1"]
-script = ExtResource("3_6u7bd")
+[sub_resource type="Resource" id="Resource_ylvei"]
+script = ExtResource("3_myfhi")
 id = &"offence"
 display_name = "Offence"
 allowed_categories = Array[int]([0])
 
-[sub_resource type="Resource" id="Resource_k0w4r"]
-script = ExtResource("3_6u7bd")
+[sub_resource type="Resource" id="Resource_0bt3e"]
+script = ExtResource("3_myfhi")
 id = &"guard"
 display_name = "Guard"
 allowed_categories = Array[int]([1])
 
-[sub_resource type="Resource" id="Resource_eiats"]
-script = ExtResource("3_6u7bd")
+[sub_resource type="Resource" id="Resource_xuprx"]
+script = ExtResource("3_myfhi")
 id = &"aux"
 display_name = "Auxiliary"
 allowed_categories = Array[int]([0, 2])
 
 [resource]
-script = ExtResource("4_8a4ma")
-basic_attack = ExtResource("2_r7jo2")
-skill = ExtResource("5_aheqk")
-arts = ExtResource("1_lr48m")
-true_arts = ExtResource("6_rc3hm")
-equipment_slots = Array[ExtResource("3_6u7bd")]([SubResource("Resource_r3jl1"), SubResource("Resource_k0w4r"), SubResource("Resource_eiats")])
+script = ExtResource("4_u74kn")
+basic_attack = ExtResource("2_kdf17")
+skill = ExtResource("5_0v0aa")
+arts = ExtResource("1_v1skq")
+true_arts = ExtResource("6_3tpkr")
+equipment_slots = Array[ExtResource("3_myfhi")]([SubResource("Resource_ylvei"), SubResource("Resource_0bt3e"), SubResource("Resource_xuprx")])
 lore = "Former shield captain of the Ember Watch. He fights to keep the line, and the line keeps him."
 roster_order = 0
 id = &"kael_vondar"

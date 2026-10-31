@@ -92,6 +92,8 @@ func _connect_battle() -> void:
 	if _connected:
 		return
 	_connected = true
+	battle.warning.connect(_on_warning)
+	battle.ability_windup.connect(_on_ability_windup)
 	battle.battle_reset.connect(_on_battle_reset)
 	battle.wave_started.connect(_on_wave_started)
 	battle.ability_used.connect(_on_ability_used)
@@ -102,6 +104,19 @@ func _connect_battle() -> void:
 	battle.unit_died.connect(_on_unit_died)
 	battle.target_changed.connect(_on_target_changed)
 	battle.battle_finished.connect(_on_battle_finished)
+
+
+func _on_warning(text: String) -> void:
+	Audio.play(AudioDirector.Sfx.WARNING, -6.0)
+
+
+func _on_ability_windup(caster: UnitState, ability: AbilityDef, duration: float) -> void:
+	if caster == null or ability == null:
+		return
+	if caster.view != null and is_instance_valid(caster.view):
+		caster.view.start_telegraph(ability.color, duration)
+		_spawn_text("! %s" % ability.display_name,
+			caster.view.global_position + Vector2(0, -120), Color(1.0, 0.62, 0.35), 14)
 
 
 func _on_battle_reset(allies: Array) -> void:
@@ -121,6 +136,7 @@ func _on_battle_reset(allies: Array) -> void:
 
 
 func _on_wave_started(_wave_index: int, _wave_count: int) -> void:
+	Audio.play(AudioDirector.Sfx.WAVE, -6.0)
 	for index in range(battle.enemies.size()):
 		var unit: UnitState = battle.enemies[index]
 		var view: Unit = Unit.new()
@@ -166,6 +182,10 @@ func _on_damage_dealt(source: UnitState, target: UnitState, result: Dictionary) 
 		target.view.play_hit()
 	if amount <= 0.0 and absorbed <= 0.0:
 		return
+	if is_crit:
+		Audio.play(AudioDirector.Sfx.CRIT, -5.0)
+	else:
+		Audio.play(AudioDirector.Sfx.HIT, -9.0, 1.0)
 	if target == null or target.view == null or not is_instance_valid(target.view):
 		return
 	var label: String = "-%d" % int(round(amount))
@@ -182,6 +202,7 @@ func _on_damage_dealt(source: UnitState, target: UnitState, result: Dictionary) 
 
 
 func _on_healed(unit: UnitState, amount: float) -> void:
+	Audio.play(AudioDirector.Sfx.HEAL, -8.0)
 	if unit == null or amount <= 0.0:
 		return
 	if unit.view == null or not is_instance_valid(unit.view):
@@ -190,12 +211,14 @@ func _on_healed(unit: UnitState, amount: float) -> void:
 
 
 func _on_shield_granted(unit: UnitState, amount: float) -> void:
+	Audio.play(AudioDirector.Sfx.SHIELD, -8.0)
 	if unit == null or unit.view == null or not is_instance_valid(unit.view):
 		return
 	_spawn_text("+%d ward" % int(round(amount)), unit.view.global_position + Vector2(0, -88), Color(0.6, 0.9, 1.0), 13)
 
 
 func _on_break_started(unit: UnitState) -> void:
+	Audio.play(AudioDirector.Sfx.BREAK, -3.0)
 	if unit == null or unit.view == null or not is_instance_valid(unit.view):
 		return
 	_spawn_text("BROKEN", unit.view.global_position + Vector2(0, -95), Color(1.0, 0.85, 0.3), 18)
@@ -232,7 +255,10 @@ func _on_battle_finished(victory: bool, results: Dictionary) -> void:
 	Game.last_battle_victory = victory
 	Game.last_results = results
 	_end_timer = 1.4
-	if not victory:
+	if victory:
+		Audio.play(AudioDirector.Sfx.VICTORY, -3.0)
+	else:
+		Audio.play(AudioDirector.Sfx.DEFEAT, -3.0)
 		hud.show_warning("The party was defeated.")
 
 

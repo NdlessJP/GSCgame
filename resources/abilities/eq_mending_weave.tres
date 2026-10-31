@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_3kny7"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_axo1d"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_jo6u2"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_mwwvd"]
 
-[sub_resource type="Resource" id="Resource_w0hh1"]
-script = ExtResource("1_3kny7")
+[sub_resource type="Resource" id="Resource_2yxkn"]
+script = ExtResource("1_jo6u2")
 effect_type = 1
 target_mode_override = -1
 chance = 1.0
@@ -27,7 +27,7 @@ break_amount = 0.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_axo1d")
+script = ExtResource("2_mwwvd")
 id = &"eq_mending_weave"
 display_name = "Mending Weave"
 description = "Knits wounds closed."
@@ -37,7 +37,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 4
-effects = Array[ExtResource("1_3kny7")]([SubResource("Resource_w0hh1")])
+effects = Array[ExtResource("1_jo6u2")]([SubResource("Resource_2yxkn")])
 color = Color(0.7, 1, 0.8, 1)
 show_projectile = false
 projectile_speed = 460.0

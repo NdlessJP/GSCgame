@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_lwfjm"]
-[ext_resource type="Resource" path="res://resources/statuses/status_venom.tres" id="2_gekob"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_agu6h"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_kap1r"]
+[ext_resource type="Resource" path="res://resources/statuses/status_venom.tres" id="2_ccu2h"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_7koh7"]
 
-[sub_resource type="Resource" id="Resource_lgb4r"]
-script = ExtResource("1_lwfjm")
+[sub_resource type="Resource" id="Resource_jm476"]
+script = ExtResource("1_kap1r")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -27,8 +27,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_korq5"]
-script = ExtResource("1_lwfjm")
+[sub_resource type="Resource" id="Resource_s4inv"]
+script = ExtResource("1_kap1r")
 effect_type = 3
 target_mode_override = 1
 chance = 1.0
@@ -48,11 +48,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_gekob")
+status = ExtResource("2_ccu2h")
 duration_override = -1.0
 
 [resource]
-script = ExtResource("3_agu6h")
+script = ExtResource("3_7koh7")
 id = &"bren_arts"
 display_name = "Scorching Rain"
 description = "Calls down a rain of fire."
@@ -62,7 +62,7 @@ arts_cost = 100.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 1
-effects = Array[ExtResource("1_lwfjm")]([SubResource("Resource_lgb4r"), SubResource("Resource_korq5")])
+effects = Array[ExtResource("1_kap1r")]([SubResource("Resource_jm476"), SubResource("Resource_s4inv")])
 color = Color(1, 0.42, 0.24, 1)
 show_projectile = false
 projectile_speed = 460.0

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="StatusDef" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_l86qu"]
+[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_kci5p"]
 
 [resource]
-script = ExtResource("1_l86qu")
+script = ExtResource("1_kci5p")
 id = &"status_enraged"
 display_name = "Enraged"
 description = "Attack greatly increased."

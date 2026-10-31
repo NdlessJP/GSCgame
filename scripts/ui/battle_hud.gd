@@ -17,6 +17,8 @@ var _quest_label: Label = null
 var _wave_label: Label = null
 var _state_label: Label = null
 var _pause_button: Button = null
+var _target_label: Label = null
+var _speed_button: Button = null
 var _boss_panel: PanelContainer = null
 var _boss_name: Label = null
 var _boss_hp_bar: ProgressBar = null
@@ -75,9 +77,15 @@ func _build_top_bar() -> void:
 	row.add_child(_wave_label)
 	_state_label = UiStyle.make_label("Preparation", 12, UiStyle.TEXT_DIM)
 	row.add_child(_state_label)
+	_target_label = UiStyle.make_label("Target: -", 12, UiStyle.TEXT_DIM)
+	row.add_child(_target_label)
 	var spacer: Control = Control.new()
 	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_child(spacer)
+	_speed_button = UiStyle.make_button("1x", 12, 26)
+	_speed_button.tooltip_text = "Battle speed (1x, 2x, 3x)"
+	_speed_button.pressed.connect(_on_speed_pressed)
+	row.add_child(_speed_button)
 	_pause_button = UiStyle.make_button("Pause", 12, 26)
 	_pause_button.pressed.connect(func() -> void: pause_pressed.emit())
 	row.add_child(_pause_button)
@@ -218,6 +226,7 @@ func bind(battle_controller: BattleController) -> void:
 	battle.wave_started.connect(_on_wave_started)
 	battle.wave_cleared.connect(_on_wave_cleared)
 	battle.log_message.connect(add_log)
+	battle.target_changed.connect(_on_target_changed)
 	battle.warning.connect(show_warning)
 	battle.status_changed.connect(func(_unit: UnitState) -> void: pass)
 	_on_battle_reset(battle.allies)
@@ -234,6 +243,7 @@ func _on_battle_reset(allies: Array) -> void:
 			panel.bind(null, battle)
 	if battle != null and battle.quest != null:
 		_quest_label.text = battle.quest.display_name
+	_target_label.text = "Target: -"
 
 
 func _on_state_changed(new_state: int, _old_state: int) -> void:
@@ -244,6 +254,23 @@ func _on_state_changed(new_state: int, _old_state: int) -> void:
 
 func _on_wave_started(wave_index: int, wave_count: int) -> void:
 	_wave_label.text = "Wave %d/%d" % [wave_index + 1, wave_count]
+
+
+func _on_target_changed(unit: UnitState) -> void:
+	if unit == null or unit.is_dead:
+		_target_label.text = "Target: -"
+		return
+	_target_label.text = "Target: %s" % unit.display_name()
+
+
+func _on_speed_pressed() -> void:
+	if battle == null:
+		return
+	var next_speed: float = battle.speed + 1.0
+	if next_speed > 3.0:
+		next_speed = 1.0
+	battle.speed = next_speed
+	_speed_button.text = "%dx" % int(battle.speed)
 
 
 func _on_wave_cleared(wave_index: int) -> void:

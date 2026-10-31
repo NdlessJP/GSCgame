@@ -9,6 +9,9 @@ extends RefCounted
 
 var def: UnitDef = null
 var level: int = 1
+## Flat multiplier on every derived stat.  Used by the wave difficulty ramp so
+## the shared UnitDef resource never has to be modified.
+var stat_multiplier: float = 1.0
 var hp: float = 0.0
 var arts: float = 0.0
 var is_dead: bool = false
@@ -42,7 +45,7 @@ func _init(unit_def: UnitDef = null, unit_level: int = 1) -> void:
 	def = unit_def
 	level = maxi(unit_level, 1)
 	if def != null:
-		hp = def.max_hp_at(level)
+		hp = max_hp()
 		break_max = (def as EnemyDef).break_max if def is EnemyDef else 100.0
 		break_meter = break_max
 
@@ -105,7 +108,7 @@ func _status_flat(field: StringName) -> float:
 
 func max_hp() -> float:
 	var base: float = def.max_hp_at(level) if def != null else 1.0
-	return maxf(1.0, base + _equip_sum(&"max_hp_flat"))
+	return maxf(1.0, base * stat_multiplier + _equip_sum(&"max_hp_flat"))
 
 
 ## Recomputes the maximum HP after equipment changed and keeps the current HP
@@ -119,28 +122,28 @@ func refresh_max_hp() -> void:
 
 
 func attack_stat() -> float:
-	var base: float = def.attack_at(level) if def != null else 0.0
+	var base: float = (def.attack_at(level) if def != null else 0.0) * stat_multiplier
 	var flat: float = base + _equip_sum(&"attack_flat") + _status_flat(&"attack_flat")
 	var percent: float = _equip_sum(&"attack_percent") + _status_percent(&"attack_percent")
 	return maxf(1.0, flat * (1.0 + percent))
 
 
 func defense_stat() -> float:
-	var base: float = def.defense_at(level) if def != null else 0.0
+	var base: float = (def.defense_at(level) if def != null else 0.0) * stat_multiplier
 	var flat: float = base + _equip_sum(&"defense_flat") + _status_flat(&"defense_flat")
 	var percent: float = _equip_sum(&"defense_percent") + _status_percent(&"defense_percent")
 	return maxf(0.0, flat * (1.0 + percent))
 
 
 func magic_stat() -> float:
-	var base: float = def.magic_at(level) if def != null else 0.0
+	var base: float = (def.magic_at(level) if def != null else 0.0) * stat_multiplier
 	var flat: float = base + _status_flat(&"magic_flat")
 	var percent: float = _equip_sum(&"magic_percent") + _status_percent(&"magic_percent")
 	return maxf(1.0, flat * (1.0 + percent))
 
 
 func magic_defense_stat() -> float:
-	var base: float = def.magic_defense_at(level) if def != null else 0.0
+	var base: float = (def.magic_defense_at(level) if def != null else 0.0) * stat_multiplier
 	var flat: float = base + _status_flat(&"magic_defense_flat")
 	var percent: float = _equip_sum(&"magic_defense_percent") + _status_percent(&"magic_defense_percent")
 	return maxf(0.0, flat * (1.0 + percent))

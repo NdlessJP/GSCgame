@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_3p21q"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_mkfhc"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_fmocg"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_3bxp3"]
 
-[sub_resource type="Resource" id="Resource_ik4rn"]
-script = ExtResource("1_3p21q")
+[sub_resource type="Resource" id="Resource_31bwf"]
+script = ExtResource("1_fmocg")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -27,7 +27,7 @@ break_amount = 0.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_mkfhc")
+script = ExtResource("2_3bxp3")
 id = &"husk_ability"
 display_name = "Quake"
 description = "Shatters the ground beneath the party."
@@ -37,7 +37,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 1.0
 target_mode = 1
-effects = Array[ExtResource("1_3p21q")]([SubResource("Resource_ik4rn")])
+effects = Array[ExtResource("1_fmocg")]([SubResource("Resource_31bwf")])
 color = Color(0.72, 0.52, 0.28, 1)
 show_projectile = false
 projectile_speed = 460.0

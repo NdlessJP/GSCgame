@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_ptci5"]
-[ext_resource type="Resource" path="res://resources/statuses/status_might.tres" id="2_ejblr"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_t8ktw"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_ih7qu"]
+[ext_resource type="Resource" path="res://resources/statuses/status_might.tres" id="2_hkqbt"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_wn2ry"]
 
-[sub_resource type="Resource" id="Resource_ysuvm"]
-script = ExtResource("1_ptci5")
+[sub_resource type="Resource" id="Resource_u8a67"]
+script = ExtResource("1_ih7qu")
 effect_type = 3
 target_mode_override = 3
 chance = 1.0
@@ -25,11 +25,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_ejblr")
+status = ExtResource("2_hkqbt")
 duration_override = -1.0
 
-[sub_resource type="Resource" id="Resource_rh2e3"]
-script = ExtResource("1_ptci5")
+[sub_resource type="Resource" id="Resource_aie21"]
+script = ExtResource("1_ih7qu")
 effect_type = 4
 target_mode_override = 3
 chance = 1.0
@@ -52,7 +52,7 @@ break_amount = 0.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("3_t8ktw")
+script = ExtResource("3_wn2ry")
 id = &"eq_warcry"
 display_name = "War Cry"
 description = "A shout that sharpens every blade."
@@ -62,7 +62,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 3
-effects = Array[ExtResource("1_ptci5")]([SubResource("Resource_ysuvm"), SubResource("Resource_rh2e3")])
+effects = Array[ExtResource("1_ih7qu")]([SubResource("Resource_u8a67"), SubResource("Resource_aie21")])
 color = Color(1, 0.6, 0.3, 1)
 show_projectile = false
 projectile_speed = 460.0

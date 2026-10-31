@@ -1,37 +1,37 @@
 [gd_resource type="Resource" script_class="CharacterDef" load_steps=10 format=3]
 
-[ext_resource type="Resource" path="res://resources/abilities/torv_arts.tres" id="1_5a0e0"]
-[ext_resource type="Resource" path="res://resources/abilities/torv_basic.tres" id="2_tp8ry"]
-[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_2a6ej"]
-[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_m2ij2"]
-[ext_resource type="Resource" path="res://resources/abilities/torv_skill.tres" id="5_762tn"]
-[ext_resource type="Resource" path="res://resources/abilities/torv_true.tres" id="6_6kynd"]
+[ext_resource type="Resource" path="res://resources/abilities/torv_arts.tres" id="1_f0gcs"]
+[ext_resource type="Resource" path="res://resources/abilities/torv_basic.tres" id="2_akkav"]
+[ext_resource type="Script" path="res://scripts/data/equipment_slot_def.gd" id="3_ca8i4"]
+[ext_resource type="Script" path="res://scripts/data/character_def.gd" id="4_qp1on"]
+[ext_resource type="Resource" path="res://resources/abilities/torv_skill.tres" id="5_aca3n"]
+[ext_resource type="Resource" path="res://resources/abilities/torv_true.tres" id="6_fitme"]
 
-[sub_resource type="Resource" id="Resource_25ajq"]
-script = ExtResource("3_2a6ej")
+[sub_resource type="Resource" id="Resource_er0qa"]
+script = ExtResource("3_ca8i4")
 id = &"offence"
 display_name = "Offence"
 allowed_categories = Array[int]([1])
 
-[sub_resource type="Resource" id="Resource_fac52"]
-script = ExtResource("3_2a6ej")
+[sub_resource type="Resource" id="Resource_xkatl"]
+script = ExtResource("3_ca8i4")
 id = &"guard"
 display_name = "Guard"
 allowed_categories = Array[int]([1])
 
-[sub_resource type="Resource" id="Resource_r8v3j"]
-script = ExtResource("3_2a6ej")
+[sub_resource type="Resource" id="Resource_xd8bh"]
+script = ExtResource("3_ca8i4")
 id = &"aux"
 display_name = "Auxiliary"
 allowed_categories = Array[int]([2])
 
 [resource]
-script = ExtResource("4_m2ij2")
-basic_attack = ExtResource("2_tp8ry")
-skill = ExtResource("5_762tn")
-arts = ExtResource("1_5a0e0")
-true_arts = ExtResource("6_6kynd")
-equipment_slots = Array[ExtResource("3_2a6ej")]([SubResource("Resource_25ajq"), SubResource("Resource_fac52"), SubResource("Resource_r8v3j")])
+script = ExtResource("4_qp1on")
+basic_attack = ExtResource("2_akkav")
+skill = ExtResource("5_aca3n")
+arts = ExtResource("1_f0gcs")
+true_arts = ExtResource("6_fitme")
+equipment_slots = Array[ExtResource("3_ca8i4")]([SubResource("Resource_er0qa"), SubResource("Resource_xkatl"), SubResource("Resource_xd8bh")])
 lore = "He was carved out of mountain stone and finished with stubbornness. Nothing gets past him twice."
 roster_order = 2
 id = &"torvald_grim"

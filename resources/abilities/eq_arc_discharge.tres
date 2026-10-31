@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_kv3ty"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_klsoc"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_ljslj"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_v2t4l"]
 
-[sub_resource type="Resource" id="Resource_4xpyr"]
-script = ExtResource("1_kv3ty")
+[sub_resource type="Resource" id="Resource_pjcyc"]
+script = ExtResource("1_ljslj")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -26,8 +26,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_1hvuk"]
-script = ExtResource("1_kv3ty")
+[sub_resource type="Resource" id="Resource_crfj1"]
+script = ExtResource("1_ljslj")
 effect_type = 4
 target_mode_override = 5
 chance = 1.0
@@ -50,7 +50,7 @@ break_amount = 0.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_klsoc")
+script = ExtResource("2_v2t4l")
 id = &"eq_arc_discharge"
 display_name = "Arc Discharge"
 description = "Discharges stored charge into a foe."
@@ -60,7 +60,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 0
-effects = Array[ExtResource("1_kv3ty")]([SubResource("Resource_4xpyr"), SubResource("Resource_1hvuk")])
+effects = Array[ExtResource("1_ljslj")]([SubResource("Resource_pjcyc"), SubResource("Resource_crfj1")])
 color = Color(0.31, 0.62, 1, 1)
 show_projectile = false
 projectile_speed = 460.0

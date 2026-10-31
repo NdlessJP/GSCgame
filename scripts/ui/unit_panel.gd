@@ -101,15 +101,15 @@ func _build() -> void:
 	var ability_row: HBoxContainer = HBoxContainer.new()
 	ability_row.add_theme_constant_override("separation", 3)
 	root.add_child(ability_row)
-	_skill_button = UiStyle.make_button("Skill", 11, 28)
+	_skill_button = UiStyle.make_button("Skill", 11, 34)
 	_skill_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_skill_button.pressed.connect(_on_skill_pressed)
 	ability_row.add_child(_skill_button)
-	_arts_button = UiStyle.make_button("Arts", 11, 28)
+	_arts_button = UiStyle.make_button("Arts", 11, 34)
 	_arts_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_arts_button.pressed.connect(_on_arts_pressed)
 	ability_row.add_child(_arts_button)
-	_true_button = UiStyle.make_button("True Arts", 11, 28)
+	_true_button = UiStyle.make_button("True Arts", 11, 34)
 	_true_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	_true_button.pressed.connect(_on_true_pressed)
 	ability_row.add_child(_true_button)
@@ -200,13 +200,15 @@ func _refresh_abilities(def: CharacterDef) -> void:
 	_true_button.tooltip_text = _tooltip(def.true_arts, battle_ready)
 
 
+## The button shows the ability name on the first line and its cost or
+## remaining cooldown on the second, so the player never has to guess.
 func _ability_text(ability: AbilityDef, label: String, battle_ready: bool) -> String:
 	if ability == null:
 		return "-"
 	var remaining: float = unit.cooldown_remaining(ability.id)
 	if remaining > 0.0:
-		return "%s %.1fs" % [label, remaining]
-	return label
+		return "%s\n%.1fs" % [ability.display_name, remaining]
+	return "%s\n%s" % [ability.display_name, label]
 
 
 func _can_use(ability: AbilityDef, battle_ready: bool) -> bool:
@@ -221,6 +223,10 @@ func _tooltip(ability: AbilityDef, battle_ready: bool) -> String:
 	var lines: String = ability.display_name
 	if not ability.description.is_empty():
 		lines += "\n" + ability.description
+	if ability.arts_cost > 0.0:
+		lines += "\nCosts %d arts" % int(ability.arts_cost)
+	if ability.cooldown > 0.0:
+		lines += "\nCooldown %.0fs" % ability.cooldown
 	if not battle_ready:
 		lines += "\nNot available right now"
 	elif unit.is_dead:

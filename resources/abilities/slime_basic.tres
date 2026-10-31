@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_07wi2"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_dbp5d"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_8jogn"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_fcojj"]
 
-[sub_resource type="Resource" id="Resource_hux0b"]
-script = ExtResource("1_07wi2")
+[sub_resource type="Resource" id="Resource_jahf3"]
+script = ExtResource("1_8jogn")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -26,8 +26,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_m68bs"]
-script = ExtResource("1_07wi2")
+[sub_resource type="Resource" id="Resource_p8tou"]
+script = ExtResource("1_8jogn")
 effect_type = 5
 target_mode_override = -1
 chance = 1.0
@@ -50,7 +50,7 @@ break_amount = 6.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_dbp5d")
+script = ExtResource("2_fcojj")
 id = &"slime_basic"
 display_name = "Squelch"
 description = "A heavy slap."
@@ -60,7 +60,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 0
-effects = Array[ExtResource("1_07wi2")]([SubResource("Resource_hux0b"), SubResource("Resource_m68bs")])
+effects = Array[ExtResource("1_8jogn")]([SubResource("Resource_jahf3"), SubResource("Resource_p8tou")])
 color = Color(0.31, 0.62, 1, 1)
 show_projectile = false
 projectile_speed = 460.0

@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_c0v6u"]
-[ext_resource type="Resource" path="res://resources/statuses/status_sundered.tres" id="2_om4gq"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_03yma"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_d28d0"]
+[ext_resource type="Resource" path="res://resources/statuses/status_sundered.tres" id="2_p8gd4"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_ysmi1"]
 
-[sub_resource type="Resource" id="Resource_qrrlj"]
-script = ExtResource("1_c0v6u")
+[sub_resource type="Resource" id="Resource_7tudt"]
+script = ExtResource("1_d28d0")
 effect_type = 1
 target_mode_override = 3
 chance = 1.0
@@ -27,8 +27,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_k36uv"]
-script = ExtResource("1_c0v6u")
+[sub_resource type="Resource" id="Resource_dy0vk"]
+script = ExtResource("1_d28d0")
 effect_type = 3
 target_mode_override = 1
 chance = 1.0
@@ -48,11 +48,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_om4gq")
+status = ExtResource("2_p8gd4")
 duration_override = -1.0
 
 [resource]
-script = ExtResource("3_03yma")
+script = ExtResource("3_ysmi1")
 id = &"lysa_arts"
 display_name = "Cleansing Mist"
 description = "Heals the party and weakens the enemy guard."
@@ -62,7 +62,7 @@ arts_cost = 100.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 3
-effects = Array[ExtResource("1_c0v6u")]([SubResource("Resource_qrrlj"), SubResource("Resource_k36uv")])
+effects = Array[ExtResource("1_d28d0")]([SubResource("Resource_7tudt"), SubResource("Resource_dy0vk")])
 color = Color(0.31, 0.62, 1, 1)
 show_projectile = false
 projectile_speed = 460.0

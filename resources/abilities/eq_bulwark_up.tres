@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_ptbkk"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_735it"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_mg2mi"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_dgxsg"]
 
-[sub_resource type="Resource" id="Resource_cqvco"]
-script = ExtResource("1_ptbkk")
+[sub_resource type="Resource" id="Resource_vh35e"]
+script = ExtResource("1_mg2mi")
 effect_type = 2
 target_mode_override = 5
 chance = 1.0
@@ -27,7 +27,7 @@ break_amount = 0.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_735it")
+script = ExtResource("2_dgxsg")
 id = &"eq_bulwark_up"
 display_name = "Bulwark"
 description = "Raises the plate into a guard."
@@ -37,7 +37,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 5
-effects = Array[ExtResource("1_ptbkk")]([SubResource("Resource_cqvco")])
+effects = Array[ExtResource("1_mg2mi")]([SubResource("Resource_vh35e")])
 color = Color(0.6, 0.8, 1, 1)
 show_projectile = false
 projectile_speed = 460.0

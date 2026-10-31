@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_mq63e"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_dtbke"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_4ndxv"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_b0p8u"]
 
-[sub_resource type="Resource" id="Resource_d5oeb"]
-script = ExtResource("1_mq63e")
+[sub_resource type="Resource" id="Resource_d0nct"]
+script = ExtResource("1_4ndxv")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -26,8 +26,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_mpqh3"]
-script = ExtResource("1_mq63e")
+[sub_resource type="Resource" id="Resource_q008d"]
+script = ExtResource("1_4ndxv")
 effect_type = 5
 target_mode_override = -1
 chance = 1.0
@@ -50,7 +50,7 @@ break_amount = 15.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_dtbke")
+script = ExtResource("2_b0p8u")
 id = &"kael_true"
 display_name = "Blazing Verdict"
 description = "Judges every enemy on the field with a wave of fire."
@@ -60,7 +60,7 @@ arts_cost = 200.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 1
-effects = Array[ExtResource("1_mq63e")]([SubResource("Resource_d5oeb"), SubResource("Resource_mpqh3")])
+effects = Array[ExtResource("1_4ndxv")]([SubResource("Resource_d0nct"), SubResource("Resource_q008d")])
 color = Color(1, 0.42, 0.24, 1)
 show_projectile = false
 projectile_speed = 460.0

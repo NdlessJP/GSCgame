@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=8 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_khby0"]
-[ext_resource type="Resource" path="res://resources/statuses/status_sundered.tres" id="2_a4lbv"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_lhx55"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_jkov1"]
+[ext_resource type="Resource" path="res://resources/statuses/status_sundered.tres" id="2_0oaje"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_6x8nv"]
 
-[sub_resource type="Resource" id="Resource_kd4yi"]
-script = ExtResource("1_khby0")
+[sub_resource type="Resource" id="Resource_7hfca"]
+script = ExtResource("1_jkov1")
 effect_type = 5
 target_mode_override = -1
 chance = 1.0
@@ -27,8 +27,8 @@ arts_amount = 0.0
 break_amount = 90.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_b6jbf"]
-script = ExtResource("1_khby0")
+[sub_resource type="Resource" id="Resource_nadgn"]
+script = ExtResource("1_jkov1")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -50,8 +50,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_p7yxb"]
-script = ExtResource("1_khby0")
+[sub_resource type="Resource" id="Resource_x0ggj"]
+script = ExtResource("1_jkov1")
 effect_type = 3
 target_mode_override = -1
 chance = 1.0
@@ -71,11 +71,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_a4lbv")
+status = ExtResource("2_0oaje")
 duration_override = -1.0
 
-[sub_resource type="Resource" id="Resource_0y1lr"]
-script = ExtResource("1_khby0")
+[sub_resource type="Resource" id="Resource_6kdci"]
+script = ExtResource("1_jkov1")
 effect_type = 4
 target_mode_override = 5
 chance = 1.0
@@ -98,7 +98,7 @@ break_amount = 0.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("3_lhx55")
+script = ExtResource("3_6x8nv")
 id = &"rune_true"
 display_name = "Eventide Nail"
 description = "Drives a nail of night through the enemy's resolve."
@@ -108,7 +108,7 @@ arts_cost = 200.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 0
-effects = Array[ExtResource("1_khby0")]([SubResource("Resource_kd4yi"), SubResource("Resource_b6jbf"), SubResource("Resource_p7yxb"), SubResource("Resource_0y1lr")])
+effects = Array[ExtResource("1_jkov1")]([SubResource("Resource_7hfca"), SubResource("Resource_nadgn"), SubResource("Resource_x0ggj"), SubResource("Resource_6kdci")])
 color = Color(0.66, 0.36, 0.88, 1)
 show_projectile = false
 projectile_speed = 460.0

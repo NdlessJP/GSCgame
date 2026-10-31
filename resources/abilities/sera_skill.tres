@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_ga865"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_kh4es"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_v0xc2"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_bnwus"]
 
-[sub_resource type="Resource" id="Resource_7mhw0"]
-script = ExtResource("1_ga865")
+[sub_resource type="Resource" id="Resource_f6ktx"]
+script = ExtResource("1_v0xc2")
 effect_type = 1
 target_mode_override = -1
 chance = 1.0
@@ -27,7 +27,7 @@ break_amount = 0.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_kh4es")
+script = ExtResource("2_bnwus")
 id = &"sera_skill"
 display_name = "Mending Light"
 description = "Heals the most wounded ally."
@@ -37,7 +37,7 @@ arts_cost = 0.0
 arts_generated = 15.0
 windup = 0.0
 target_mode = 4
-effects = Array[ExtResource("1_ga865")]([SubResource("Resource_7mhw0")])
+effects = Array[ExtResource("1_v0xc2")]([SubResource("Resource_f6ktx")])
 color = Color(1, 0.93, 0.66, 1)
 show_projectile = false
 projectile_speed = 460.0

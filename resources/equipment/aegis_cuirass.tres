@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="EquipmentDef" load_steps=3 format=3]
 
-[ext_resource type="Resource" path="res://resources/abilities/eq_aegis_pulse.tres" id="1_36h4t"]
-[ext_resource type="Script" path="res://scripts/data/equipment_def.gd" id="2_dla0f"]
+[ext_resource type="Resource" path="res://resources/abilities/eq_aegis_pulse.tres" id="1_r0fqs"]
+[ext_resource type="Script" path="res://scripts/data/equipment_def.gd" id="2_a8x1n"]
 
 [resource]
-script = ExtResource("2_dla0f")
+script = ExtResource("2_a8x1n")
 id = &"aegis_cuirass"
 display_name = "Aegis Cuirass"
 description = "It remembers every blow it has taken."
@@ -18,5 +18,5 @@ attack_flat = 0.0
 defense_flat = 0.0
 max_hp_flat = 25.0
 arts_per_attack = 0.0
-active_ability = ExtResource("1_36h4t")
+active_ability = ExtResource("1_r0fqs")
 icon_color = Color(0.5, 0.85, 0.75, 1)

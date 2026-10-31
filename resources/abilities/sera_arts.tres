@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_ggjj2"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_araki"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_12u27"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_d63fv"]
 
-[sub_resource type="Resource" id="Resource_v06wj"]
-script = ExtResource("1_ggjj2")
+[sub_resource type="Resource" id="Resource_rnlg1"]
+script = ExtResource("1_12u27")
 effect_type = 1
 target_mode_override = 3
 chance = 1.0
@@ -26,8 +26,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_dvsbn"]
-script = ExtResource("1_ggjj2")
+[sub_resource type="Resource" id="Resource_x0dic"]
+script = ExtResource("1_12u27")
 effect_type = 2
 target_mode_override = 3
 chance = 1.0
@@ -50,7 +50,7 @@ break_amount = 0.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_araki")
+script = ExtResource("2_d63fv")
 id = &"sera_arts"
 display_name = "Aegis Prayer"
 description = "Heals and shields the whole party."
@@ -60,7 +60,7 @@ arts_cost = 100.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 3
-effects = Array[ExtResource("1_ggjj2")]([SubResource("Resource_v06wj"), SubResource("Resource_dvsbn")])
+effects = Array[ExtResource("1_12u27")]([SubResource("Resource_rnlg1"), SubResource("Resource_x0dic")])
 color = Color(1, 0.93, 0.66, 1)
 show_projectile = false
 projectile_speed = 460.0

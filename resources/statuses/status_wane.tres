@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="StatusDef" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_p3hae"]
+[ext_resource type="Script" path="res://scripts/data/status_def.gd" id="1_b48sc"]
 
 [resource]
-script = ExtResource("1_p3hae")
+script = ExtResource("1_b48sc")
 id = &"status_wane"
 display_name = "Wane"
 description = "Magic defence reduced."

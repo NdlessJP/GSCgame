@@ -1,18 +1,18 @@
 [gd_resource type="Resource" script_class="EnemyDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="1_duswb"]
-[ext_resource type="Resource" path="res://resources/abilities/wisp_basic.tres" id="2_281rk"]
-[ext_resource type="Resource" path="res://resources/abilities/wisp_ability.tres" id="3_t7l8v"]
-[ext_resource type="Script" path="res://scripts/data/enemy_def.gd" id="4_ywa06"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="1_8kf8v"]
+[ext_resource type="Resource" path="res://resources/abilities/wisp_basic.tres" id="2_ldovt"]
+[ext_resource type="Resource" path="res://resources/abilities/wisp_ability.tres" id="3_843kn"]
+[ext_resource type="Script" path="res://scripts/data/enemy_def.gd" id="4_4cbb4"]
 
 [resource]
-script = ExtResource("4_ywa06")
-attacks = Array[ExtResource("1_duswb")]([ExtResource("2_281rk"), ExtResource("3_t7l8v")])
+script = ExtResource("4_4cbb4")
+attacks = Array[ExtResource("1_8kf8v")]([ExtResource("2_ldovt"), ExtResource("3_843kn")])
 break_max = 60.0
 break_duration = 3.5
 is_boss = false
 phase_change_threshold = 0.5
-phase_two_attacks = Array[ExtResource("1_duswb")]([])
+phase_two_attacks = Array[ExtResource("1_8kf8v")]([])
 target_preference = 3
 attack_start_delay = 0.5
 id = &"cinder_wisp"

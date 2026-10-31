@@ -19,8 +19,13 @@ var flash: float = 0.0
 var selected: bool = false
 ## Rises briefly when the unit takes damage.
 var hurt_shake: float = 0.0
+## 0..1 while the unit is winding up an ability.  Draws a pulsing ring so the
+## player can see the telegraph before the attack lands.
+var telegraph: float = 0.0
+var telegraph_color: Color = Color(1.0, 0.45, 0.3)
 
 var _attack_tween: Tween = null
+var _telegraph_tween: Tween = null
 var _font: Font = null
 
 
@@ -49,6 +54,30 @@ func _process(delta: float) -> void:
 func play_hit() -> void:
 	flash = 1.0
 	hurt_shake = 1.0
+	queue_redraw()
+
+
+## Starts the visible wind-up telegraph for the given ability.
+func start_telegraph(color: Color, duration: float) -> void:
+	telegraph_color = color
+	if _telegraph_tween != null and _telegraph_tween.is_valid():
+		_telegraph_tween.kill()
+	var half: float = maxf(0.06, duration * 0.5)
+	_telegraph_tween = create_tween()
+	_telegraph_tween.tween_method(_set_telegraph, 0.0, 1.0, half)
+	_telegraph_tween.tween_method(_set_telegraph, 1.0, 0.0, half)
+
+
+func _set_telegraph(value: float) -> void:
+	telegraph = value
+	queue_redraw()
+
+
+## Cancels a running telegraph, for example when the caster dies.
+func stop_telegraph() -> void:
+	if _telegraph_tween != null and _telegraph_tween.is_valid():
+		_telegraph_tween.kill()
+	telegraph = 0.0
 	queue_redraw()
 
 
@@ -95,6 +124,17 @@ func _draw() -> void:
 		3: _draw_robed(origin, size, body_color, accent)
 		4: _draw_winged(origin, size, body_color, accent)
 		_: _draw_capsule(origin, size, body_color, accent)
+
+	# Wind-up telegraph: a pulsing ring around the charging unit.
+	if telegraph > 0.01:
+		var pulse: float = 0.5 + 0.5 * sin(float(Time.get_ticks_msec()) * 0.012)
+		var ring_color: Color = telegraph_color
+		ring_color.a = 0.35 + 0.45 * pulse * telegraph
+		var radius: float = maxf(size.x, size.y) * 0.62 + 6.0 * pulse
+		draw_arc(origin + Vector2(0, -size.y * 0.45), radius, 0.0, TAU, 28,
+			ring_color, 2.5, true)
+		draw_arc(origin + Vector2(0, -size.y * 0.45), radius * 0.72, 0.0, TAU, 24,
+			Color(ring_color.r, ring_color.g, ring_color.b, ring_color.a * 0.6), 1.5, true)
 
 	# Defeated marker.
 	if state.is_dead:

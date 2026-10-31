@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_hagv5"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_dylaa"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_jlipq"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="2_klc3i"]
 
-[sub_resource type="Resource" id="Resource_u7rto"]
-script = ExtResource("1_hagv5")
+[sub_resource type="Resource" id="Resource_lv57c"]
+script = ExtResource("1_jlipq")
 effect_type = 0
 target_mode_override = -1
 chance = 1.0
@@ -26,8 +26,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_ay8vd"]
-script = ExtResource("1_hagv5")
+[sub_resource type="Resource" id="Resource_slrc3"]
+script = ExtResource("1_jlipq")
 effect_type = 5
 target_mode_override = -1
 chance = 1.0
@@ -50,7 +50,7 @@ break_amount = 18.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("2_dylaa")
+script = ExtResource("2_klc3i")
 id = &"rune_basic"
 display_name = "Rend"
 description = "A vicious cut that shakes the enemy's guard."
@@ -60,7 +60,7 @@ arts_cost = 0.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 0
-effects = Array[ExtResource("1_hagv5")]([SubResource("Resource_u7rto"), SubResource("Resource_ay8vd")])
+effects = Array[ExtResource("1_jlipq")]([SubResource("Resource_lv57c"), SubResource("Resource_slrc3")])
 color = Color(0.66, 0.36, 0.88, 1)
 show_projectile = false
 projectile_speed = 460.0

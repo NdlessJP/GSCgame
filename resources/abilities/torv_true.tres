@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=7 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_me0yc"]
-[ext_resource type="Resource" path="res://resources/statuses/status_bulwark.tres" id="2_rhqet"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_fo1nl"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_21yuu"]
+[ext_resource type="Resource" path="res://resources/statuses/status_bulwark.tres" id="2_awpoq"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_26lvy"]
 
-[sub_resource type="Resource" id="Resource_csm42"]
-script = ExtResource("1_me0yc")
+[sub_resource type="Resource" id="Resource_lnqy0"]
+script = ExtResource("1_21yuu")
 effect_type = 2
 target_mode_override = 3
 chance = 1.0
@@ -27,8 +27,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_uquos"]
-script = ExtResource("1_me0yc")
+[sub_resource type="Resource" id="Resource_x787k"]
+script = ExtResource("1_21yuu")
 effect_type = 3
 target_mode_override = 3
 chance = 1.0
@@ -48,11 +48,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_rhqet")
+status = ExtResource("2_awpoq")
 duration_override = -1.0
 
-[sub_resource type="Resource" id="Resource_wlvqc"]
-script = ExtResource("1_me0yc")
+[sub_resource type="Resource" id="Resource_5s1hj"]
+script = ExtResource("1_21yuu")
 effect_type = 4
 target_mode_override = 3
 chance = 1.0
@@ -75,7 +75,7 @@ break_amount = 0.0
 duration_override = 0.0
 
 [resource]
-script = ExtResource("3_fo1nl")
+script = ExtResource("3_26lvy")
 id = &"torv_true"
 display_name = "Mountain's Decree"
 description = "Calls down a mountain's protection over the party."
@@ -85,7 +85,7 @@ arts_cost = 200.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 3
-effects = Array[ExtResource("1_me0yc")]([SubResource("Resource_csm42"), SubResource("Resource_uquos"), SubResource("Resource_wlvqc")])
+effects = Array[ExtResource("1_21yuu")]([SubResource("Resource_lnqy0"), SubResource("Resource_x787k"), SubResource("Resource_5s1hj")])
 color = Color(0.72, 0.52, 0.28, 1)
 show_projectile = false
 projectile_speed = 460.0

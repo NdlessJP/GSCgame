@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="AbilityDef" load_steps=8 format=3]
 
-[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_aibbx"]
-[ext_resource type="Resource" path="res://resources/statuses/status_might.tres" id="2_yedmd"]
-[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_y8f0c"]
+[ext_resource type="Script" path="res://scripts/data/effect_def.gd" id="1_a2mff"]
+[ext_resource type="Resource" path="res://resources/statuses/status_might.tres" id="2_nc6cl"]
+[ext_resource type="Script" path="res://scripts/data/ability_def.gd" id="3_8rlcm"]
 
-[sub_resource type="Resource" id="Resource_pfp5j"]
-script = ExtResource("1_aibbx")
+[sub_resource type="Resource" id="Resource_rmn74"]
+script = ExtResource("1_a2mff")
 effect_type = 1
 target_mode_override = 3
 chance = 1.0
@@ -27,8 +27,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_facgd"]
-script = ExtResource("1_aibbx")
+[sub_resource type="Resource" id="Resource_ec4pc"]
+script = ExtResource("1_a2mff")
 effect_type = 2
 target_mode_override = 3
 chance = 1.0
@@ -50,8 +50,8 @@ arts_amount = 0.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_58xv6"]
-script = ExtResource("1_aibbx")
+[sub_resource type="Resource" id="Resource_382gt"]
+script = ExtResource("1_a2mff")
 effect_type = 4
 target_mode_override = 3
 chance = 1.0
@@ -73,8 +73,8 @@ arts_amount = 60.0
 break_amount = 0.0
 duration_override = 0.0
 
-[sub_resource type="Resource" id="Resource_wvmg8"]
-script = ExtResource("1_aibbx")
+[sub_resource type="Resource" id="Resource_b1o1i"]
+script = ExtResource("1_a2mff")
 effect_type = 3
 target_mode_override = 3
 chance = 1.0
@@ -94,11 +94,11 @@ shield_duration = 8.0
 shield_absorb_ratio = 1.0
 arts_amount = 0.0
 break_amount = 0.0
-status = ExtResource("2_yedmd")
+status = ExtResource("2_nc6cl")
 duration_override = -1.0
 
 [resource]
-script = ExtResource("3_y8f0c")
+script = ExtResource("3_8rlcm")
 id = &"sera_true"
 display_name = "Dawnlit Communion"
 description = "A radiant rite: healing, wards, focus and courage."
@@ -108,7 +108,7 @@ arts_cost = 200.0
 arts_generated = 0.0
 windup = 0.0
 target_mode = 3
-effects = Array[ExtResource("1_aibbx")]([SubResource("Resource_pfp5j"), SubResource("Resource_facgd"), SubResource("Resource_58xv6"), SubResource("Resource_wvmg8")])
+effects = Array[ExtResource("1_a2mff")]([SubResource("Resource_rmn74"), SubResource("Resource_ec4pc"), SubResource("Resource_382gt"), SubResource("Resource_b1o1i")])
 color = Color(1, 0.93, 0.66, 1)
 show_projectile = false
 projectile_speed = 460.0

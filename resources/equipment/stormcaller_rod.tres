@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="EquipmentDef" load_steps=3 format=3]
 
-[ext_resource type="Resource" path="res://resources/abilities/eq_arc_discharge.tres" id="1_xp1a5"]
-[ext_resource type="Script" path="res://scripts/data/equipment_def.gd" id="2_i612v"]
+[ext_resource type="Resource" path="res://resources/abilities/eq_arc_discharge.tres" id="1_s58cf"]
+[ext_resource type="Script" path="res://scripts/data/equipment_def.gd" id="2_cloqr"]
 
 [resource]
-script = ExtResource("2_i612v")
+script = ExtResource("2_cloqr")
 id = &"stormcaller_rod"
 display_name = "Stormcaller Rod"
 description = "A rod that never quite runs dry."
@@ -18,5 +18,5 @@ attack_flat = 0.0
 defense_flat = 0.0
 max_hp_flat = 0.0
 arts_per_attack = 0.0
-active_ability = ExtResource("1_xp1a5")
+active_ability = ExtResource("1_s58cf")
 icon_color = Color(0.4, 0.75, 1, 1)

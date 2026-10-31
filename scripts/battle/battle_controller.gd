@@ -51,6 +51,9 @@ signal break_ended(unit: UnitState)
 signal warning(text: String)
 signal log_message(text: String)
 signal target_changed(unit: UnitState)
+## Emitted when a unit starts winding up an ability, so the UI can show the
+## telegraph before the attack lands.
+signal ability_windup(caster: UnitState, ability: AbilityDef, duration: float)
 signal battle_finished(victory: bool, results: Dictionary)
 
 var quest: QuestDef = null
@@ -58,6 +61,10 @@ var party_ids: Array[StringName] = []
 var allies: Array[UnitState] = []
 var enemies: Array[UnitState] = []
 var preferred_target: UnitState = null
+## Simulation speed multiplier.  1.0 is real time; the HUD cycles through
+## 1x / 2x / 3x.  It only affects the battle clock, never the engine clock,
+## so it does not interfere with anything else running in the tree.
+var speed: float = 1.0
 var state: int = State.PREPARATION
 var wave_index: int = -1
 var pending: Array[PendingAction] = []
@@ -145,12 +152,16 @@ func _create_ally(character_id: StringName, index: int = 0) -> UnitState:
 	return unit
 
 
-func _create_enemy(enemy_id: StringName) -> UnitState:
+func _create_enemy(enemy_id: StringName, enemy_level: int = 1, stat_scale: float = 1.0) -> UnitState:
 	var def: EnemyDef = Game.database.enemy(enemy_id)
 	if def == null:
 		push_warning("BattleController: unknown enemy id '%s'" % enemy_id)
 		return null
-	var unit: UnitState = UnitState.new(def, 1)
+	var unit: UnitState = UnitState.new(def, enemy_level)
+	# The multiplier is applied after construction, so the starting HP has to
+	# be recomputed to match the scaled ceiling.
+	unit.stat_multiplier = stat_scale
+	unit.hp = unit.max_hp()
 	unit.is_ally = false
 	if def.attack_start_delay > 0.0:
 		unit.attack_timer = def.attack_start_delay
@@ -204,6 +215,7 @@ func toggle_pause() -> void:
 # --------------------------------------------------------------------------
 
 func _process(delta: float) -> void:
+	delta *= clampf(speed, 0.25, 4.0)
 	match state:
 		State.PREPARATION:
 			_prep_timer -= delta
@@ -230,7 +242,7 @@ func _start_wave(index: int) -> void:
 	wave_index = index
 	var wave: WaveDef = quest.waves[index]
 	for enemy_id: StringName in wave.enemy_ids:
-		var enemy: UnitState = _create_enemy(enemy_id)
+		var enemy: UnitState = _create_enemy(enemy_id, wave.enemy_level, wave.stat_scale)
 		if enemy != null:
 			enemies.append(enemy)
 	_enter_state(State.COMBAT)
@@ -367,6 +379,7 @@ func _start_windup(caster: UnitState, ability: AbilityDef, target: UnitState) ->
 	var action: PendingAction = PendingAction.new(caster, ability, target, &"enemy")
 	pending.append(action)
 	if ability.windup > 0.0:
+		ability_windup.emit(caster, ability, ability.windup)
 		if ability.target_mode == Targeting.Mode.ALL_ENEMIES:
 			warning.emit("%s is preparing %s!" % [caster.display_name(), ability.display_name])
 		else:
@@ -591,6 +604,8 @@ func _cleanup_dead_enemies() -> void:
 	enemies = kept
 	if preferred_target != null and (preferred_target.is_dead or not enemies.has(preferred_target)):
 		preferred_target = null
+		# The UI shows the current target, so it has to hear about the change.
+		target_changed.emit(null)
 
 
 func _victory() -> void:

@@ -18,6 +18,8 @@ static func run(database: GameDatabase) -> TestKit.Result:
 	_test_break_lifecycle(database, result)
 	_test_retargeting(database, result)
 	_test_healing_and_arts_generation(database, result)
+	_test_wave_scaling(database, result)
+	_test_audio_synthesis(result)
 	return result
 
 
@@ -229,6 +231,77 @@ static func _test_retargeting(database: GameDatabase, result: TestKit.Result) ->
 	var all: Array = AbilityExecutor.resolve_targets(
 		Targeting.Mode.ALL_ENEMIES, ally, allies, enemies, first, null)
 	result.ok(all.size() == 1 and all[0] == second, "Area attacks skip dead enemies")
+
+
+## The sound effects are synthesised at runtime, so the tests check that every
+## clip really contains audio and that the throttle keeps hits from stacking.
+static func _test_audio_synthesis(result: TestKit.Result) -> void:
+	var director: AudioDirector = Audio
+	result.ok(director != null, "The audio director autoload is available")
+	if director == null:
+		return
+	for sound: int in AudioDirector.Sfx.values():
+		var stream: AudioStreamWAV = director.stream_for(sound)
+		result.ok(stream != null, "Sound %d has a stream" % sound)
+		if stream == null:
+			continue
+		result.ok(stream.data.size() > 0, "Sound %d contains samples" % sound)
+		result.ok(stream.get_length() > 0.0, "Sound %d has a length" % sound)
+		# The samples must not be silent.
+		var peak: int = 0
+		var offset: int = 0
+		while offset + 1 < stream.data.size():
+			peak = maxi(peak, absi(stream.data.decode_s16(offset)))
+			offset += 2
+		result.ok(peak > 100, "Sound %d is not silent (peak %d)" % [sound, peak])
+
+	# Two identical sounds in the same instant only play once.
+	var first: bool = director.play(AudioDirector.Sfx.HIT)
+	var second: bool = director.play(AudioDirector.Sfx.HIT)
+	result.ok(first, "A sound can be played")
+	result.ok(not second, "Rapid identical sounds are throttled")
+
+
+## The wave difficulty ramp: a wave may spawn tougher enemies without ever
+## touching the shared enemy definition.
+static func _test_wave_scaling(database: GameDatabase, result: TestKit.Result) -> void:
+	var def: EnemyDef = database.enemy(&"cinder_wisp")
+	result.ok(def != null, "The wave scaling test has an enemy to scale")
+	if def == null:
+		return
+
+	var plain: UnitState = UnitState.new(def, 1)
+	var scaled: UnitState = UnitState.new(def, 1)
+	scaled.stat_multiplier = 1.25
+	scaled.hp = scaled.max_hp()
+
+	result.ok(scaled.max_hp() > plain.max_hp(),
+		"A wave scale raises the maximum HP")
+	result.ok(scaled.attack_stat() > plain.attack_stat(),
+		"A wave scale raises the attack stat")
+	result.ok(scaled.defense_stat() > plain.defense_stat(),
+		"A wave scale raises the defense stat")
+	result.ok(scaled.magic_stat() > plain.magic_stat(),
+		"A wave scale raises the magic stat")
+	result.approx(scaled.hp, scaled.max_hp(),
+		"A scaled enemy starts with its full scaled health")
+	result.approx(plain.def.base_max_hp, def.base_max_hp,
+		"Scaling a wave never modifies the shared enemy definition")
+
+	# A higher enemy level also makes the enemy tougher.
+	var levelled: UnitState = UnitState.new(def, 3)
+	result.ok(levelled.max_hp() > plain.max_hp(),
+		"A higher enemy level raises the maximum HP")
+
+	# Every quest ramps up over its waves.
+	for quest_id: Variant in database.quest_ids():
+		var quest: QuestDef = database.quests[quest_id]
+		var first: WaveDef = quest.waves[0]
+		var last: WaveDef = quest.waves[quest.wave_count() - 1]
+		var first_power: float = float(first.enemy_level) * first.stat_scale
+		var last_power: float = float(last.enemy_level) * last.stat_scale
+		result.ok(last_power >= first_power,
+			"'%s' does not get easier in its last wave" % quest.display_name)
 
 
 static func _test_healing_and_arts_generation(database: GameDatabase, result: TestKit.Result) -> void:
